@@ -21,7 +21,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "BoundedContext\\": "BoundedContext/"
+            "BoundedContext\\": "workbench/BoundedContext/"
         }
     },
     "autoload-dev": {

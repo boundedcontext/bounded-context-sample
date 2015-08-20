@@ -1,6 +1,6 @@
 <?php
 
-return new BoundedContext\Collection\Collection([
+return new \BoundedContext\Collection\Collection([
         new \BoundedContext\Log\Item(
             new \BoundedContext\ValueObject\Uuid('f0c4d179-6f25-4171-a9d4-66ea943a349e'),
             new \BoundedContext\ValueObject\Uuid('cfd9ef79-2cf3-4ee6-805f-619f72352921'),
