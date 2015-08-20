@@ -5,13 +5,17 @@ namespace Domain\Test\Aggregate\User\Event;
 use BoundedContext\ValueObject\Uuid;
 use BoundedContext\Event\AbstractEvent;
 
+use Domain\Test\ValueObject\EmailAddress;
+use Domain\Test\ValueObject\EncryptedPassword;
+use Domain\Test\ValueObject\Username;
+
 class Created extends AbstractEvent
 {
     public $username;
     public $email;
     public $password;
 
-    public function __construct(Uuid $id, $username, $email, $password)
+    public function __construct(Uuid $id, Username $username, EmailAddress $email, EncryptedPassword $password)
     {
         parent::__construct($id);
 

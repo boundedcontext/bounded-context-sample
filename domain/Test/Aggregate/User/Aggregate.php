@@ -3,6 +3,9 @@
 namespace Domain\Test\Aggregate\User;
 
 use BoundedContext\Aggregate\AbstractAggregate;
+use Domain\Test\ValueObject\EmailAddress;
+use Domain\Test\ValueObject\Password;
+use Domain\Test\ValueObject\Username;
 
 class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\Aggregate
 {
@@ -11,7 +14,7 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\A
         return new State();
     }
 
-    public function create($username, $email, $password)
+    public function create(Username $username, EmailAddress $email, Password $password)
     {
         (new Invariant\IsNotCreated($this->state))->assert();
 
@@ -19,13 +22,14 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\A
             $this->id(),
             $username,
             $email,
-            $password
+            $password->encrypt()
         ));
     }
 
-    public function change_username($username)
+    public function change_username(Username $username)
     {
         (new Invariant\IsCreated($this->state))->assert();
+
         (new Invariant\UsernameMustBeDifferent(
             $this->state,
             $username

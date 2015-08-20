@@ -4,6 +4,7 @@ namespace Infrastructure\Projection;
 
 use BoundedContext\Projection\AbstractProjection;
 use BoundedContext\ValueObject\Uuid;
+use Domain\Test\ValueObject\Username;
 
 class ActiveUsernames extends AbstractProjection implements \Domain\Test\Projection\ActiveUsernames\Projection
 {
@@ -26,27 +27,27 @@ class ActiveUsernames extends AbstractProjection implements \Domain\Test\Project
         $this->aggregate_index = [];
     }
 
-    public function exists($email)
+    public function exists(Username $username)
     {
-        return array_key_exists($email, $this->active_usernames);
+        return array_key_exists($username->toString(), $this->active_usernames);
     }
 
-    public function add(Uuid $id, $username)
+    public function add(Uuid $id, Username $username)
     {
         if($this->exists($username))
         {
-            throw new \Exception("The username [$username] is already active.");
+            throw new \Exception("The username [$username->toString()] is already active.");
         }
 
-        $this->aggregate_index[$id->toString()] = $username;
-        $this->active_usernames[$username] = 1;
+        $this->aggregate_index[$id->toString()] = $username->toString();
+        $this->active_usernames[$username->toString()] = 1;
     }
 
     public function remove(Uuid $id)
     {
         $username = $this->aggregate_index[$id->toString()];
 
-        if(!$this->exists($username))
+        if(!$this->exists(new Username($username)))
         {
             throw new \Exception("The username [$username] is not active.");
         }
@@ -55,9 +56,9 @@ class ActiveUsernames extends AbstractProjection implements \Domain\Test\Project
         unset($this->aggregate_index[$id->toString()]);
     }
 
-    public function replace(Uuid $id, $old_username, $new_username)
+    public function replace(Uuid $id, Username $old_username, Username $new_username)
     {
-        $this->remove($id, $old_username);
+        $this->remove($id);
         $this->add($id, $new_username);
     }
 }

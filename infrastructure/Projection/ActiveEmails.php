@@ -4,6 +4,7 @@ namespace Infrastructure\Projection;
 
 use BoundedContext\Projection\AbstractProjection;
 use BoundedContext\ValueObject\Uuid;
+use Domain\Test\ValueObject\EmailAddress;
 
 class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection\ActiveEmails\Projection
 {
@@ -26,27 +27,27 @@ class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection
         $this->aggregate_index = [];
     }
 
-    public function exists($email)
+    public function exists(EmailAddress $email)
     {
-        return array_key_exists($email, $this->active_emails);
+        return array_key_exists($email->toString(), $this->active_emails);
     }
 
-    public function add(Uuid $id, $email)
+    public function add(Uuid $id, EmailAddress $email)
     {
         if($this->exists($email))
         {
-            throw new \Exception("The email [$email] is an active email.");
+            throw new \Exception("The email [$email->toString()] is an active email.");
         }
 
-        $this->aggregate_index[$id->toString()] = $email;
-        $this->active_emails[$email] = 1;
+        $this->aggregate_index[$id->toString()] = $email->toString();
+        $this->active_emails[$email->toString()] = 1;
     }
 
     public function remove(Uuid $id)
     {
         $email = $this->aggregate_index[$id->toString()];
 
-        if(!$this->exists($email))
+        if(!$this->exists(new EmailAddress($email)))
         {
             throw new \Exception("The email [$email] is not an active email.");
         }
@@ -55,9 +56,9 @@ class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection
         unset($this->aggregate_index[$id->toString()]);
     }
 
-    public function replace(Uuid $id, $old_email, $new_email)
+    public function replace(Uuid $id, EmailAddress $old_email, EmailAddress $new_email)
     {
-        $this->remove($id, $old_email);
+        $this->remove($id);
         $this->add($id, $new_email);
     }
 }
