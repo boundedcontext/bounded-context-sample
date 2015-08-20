@@ -21,6 +21,8 @@
         ],
         "psr-4": {
             "App\\": "app/",
+            "Domain\\": "domain/",
+            "Infrastructure\\": "infrastructure/",
             "BoundedContext\\": "workbench/BoundedContext/"
         }
     },

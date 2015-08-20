@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 use BoundedContext\ValueObject\Uuid;
 
-use App\BoundedContext\Test\Aggregate\User\Command;
+use Domain\Test\Aggregate\User\Command;
 
 
 class TestController extends Controller
@@ -46,8 +46,8 @@ class TestController extends Controller
         ));
 
         //dd($this->app->make('BoundedContext\Contracts\Log'));
-        //dd($this->app->make('BoundedContext\Contracts\Projection\AggregateCollections\Projector'));
-        //dd($this->app->make('App\BoundedContext\Test\Projection\ActiveUsernames\Projector'));
-        dd($this->app->make('App\BoundedContext\Test\Projection\ActiveEmails\Projector'));
+        dd($this->app->make('BoundedContext\Contracts\Projection\AggregateCollections\Projector'));
+        dd($this->app->make('Domain\Test\Projection\ActiveUsernames\Projector'));
+        dd($this->app->make('Domain\Test\Projection\ActiveEmails\Projector'));
     }
 }
