@@ -46,8 +46,8 @@ class TestController extends Controller
         ));
 
         //dd($this->app->make('BoundedContext\Contracts\Log'));
-        dd($this->app->make('BoundedContext\Contracts\Projection\AggregateCollections\Projector'));
-        dd($this->app->make('Domain\Test\Projection\ActiveUsernames\Projector'));
+        //dd($this->app->make('BoundedContext\Contracts\Projection\AggregateCollections\Projector'));
+        //dd($this->app->make('Domain\Test\Projection\ActiveUsernames\Projector'));
         dd($this->app->make('Domain\Test\Projection\ActiveEmails\Projector'));
     }
 }
