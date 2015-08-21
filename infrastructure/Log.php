@@ -16,13 +16,14 @@ class Log implements \BoundedContext\Contracts\Log
     private $event_map;
     private $items;
 
-    public function __construct(Map $event_map, Collection $items)
+    public function __construct(Map $event_map, $items)
     {
         $this->event_map = $event_map;
 
+        $items = json_decode($items, true);
         foreach($items as $item)
         {
-            $this->items[] = json_encode($item->serialize());
+            $this->items[] = json_encode($item, true);
         }
     }
 
@@ -75,6 +76,7 @@ class Log implements \BoundedContext\Contracts\Log
             }
 
             $item_id = new Uuid($serialized_item['id']);
+
             if(is_null($id) || $item_id->equals($id))
             {
                 $collect = 1;
