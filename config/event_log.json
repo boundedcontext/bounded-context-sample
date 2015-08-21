@@ -1,3 +1,19 @@
+
+[
+  //Sample Snapshot
+  {
+    "id" : "f0c4d179-6f25-4171-a9d4-66ea943a349e",
+    "is_created" : 1,
+    "is_deleted" : 0,
+    "username" : "lyonscf",
+    "email" : "colin@tercet.io",
+    "password" : "drowssap"
+  }
+
+]
+
+;
+
 [
   {
     "id" : "f0c4d179-6f25-4171-a9d4-66ea943a349e",
@@ -8,7 +24,7 @@
       "id" : "b98540d7-c3f9-4af3-8d77-e46662fcb3f6",
       "username" : "lyonscf",
       "email" : "colin@tercet.io",
-      "password" : "password"
+      "password" : "drowssap"
     }
   },
   {
@@ -20,7 +36,7 @@
       "id" : "64cbea01-f61b-4135-b7e1-29b486acc7f1",
       "username" : "other",
       "email" : "colin1@tercet.io",
-      "password" : "password"
+      "password" : "drowssap"
     }
   },
   {
@@ -32,7 +48,7 @@
       "id" : "bf307a89-9727-4bdb-96e2-daabee7f7f6a",
       "username" : "another",
       "email" : "colin2@tercet.io",
-      "password" : "password"
+      "password" : "drowssap"
     }
   },
   {

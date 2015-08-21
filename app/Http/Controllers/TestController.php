@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
 use Domain\Test\ValueObject\Username;
+use Domain\Test\Aggregate\User\Command;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Http\Request;
 
 use BoundedContext\ValueObject\Uuid;
-
-use Domain\Test\Aggregate\User\Command;
-
 
 class TestController extends Controller
 {
@@ -50,7 +47,7 @@ class TestController extends Controller
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
         ));
 
-        dd($this->app->make('BoundedContext\Contracts\Log'));
+        //dd($this->app->make('BoundedContext\Contracts\Log'));
         //dd($this->app->make('BoundedContext\Contracts\Projection\AggregateCollections\Projector'));
         //dd($this->app->make('Domain\Test\Projection\ActiveUsernames\Projector'));
         dd($this->app->make('Domain\Test\Projection\ActiveEmails\Projector'));

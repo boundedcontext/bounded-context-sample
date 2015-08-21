@@ -2,10 +2,11 @@
 
 namespace Domain\Test\Invariant;
 
+use BoundedContext\Contracts\Invariant;
 use Domain\Test\Projection\ActiveUsernames;
 use Domain\Test\ValueObject\Username;
 
-class UsernameMustBeUnique
+class UsernameMustBeUnique implements Invariant
 {
     private $projection;
     private $username;
@@ -14,6 +15,11 @@ class UsernameMustBeUnique
     {
         $this->projection = $projection;
         $this->username = $username;
+    }
+
+    public function is_satisfied()
+    {
+        return (!$this->projection->exists($this->username));
     }
 
     public function assert()
