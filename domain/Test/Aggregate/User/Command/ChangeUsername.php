@@ -2,24 +2,19 @@
 
 namespace Domain\Test\Aggregate\User\Command;
 
-use BoundedContext\Command\Command;
+use BoundedContext\Command\AbstractCommand;
+use BoundedContext\Contracts\Command;
 use BoundedContext\ValueObject\Uuid;
 use Domain\Test\ValueObject\Username;
 
-class ChangeUsername implements Command
+class ChangeUsername extends AbstractCommand implements Command
 {
-    private $id;
     public $username;
 
     public function __construct(Uuid $id, Username $username)
     {
-        $this->id = $id;
+        parent::__construct($id);
+
         $this->username = $username;
     }
-
-    public function id()
-    {
-        return $this->id;
-    }
-
 }

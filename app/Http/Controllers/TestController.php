@@ -47,9 +47,30 @@ class TestController extends Controller
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
         ));
 
-        //dd($this->app->make('BoundedContext\Contracts\Log'));
-        //dd($this->app->make('BoundedContext\Contracts\Projection\AggregateCollections\Projector'));
-        //dd($this->app->make('Domain\Test\Projection\ActiveUsernames\Projector'));
-        dd($this->app->make('Domain\Test\Projection\ActiveEmails\Projector'));
+        echo "<pre>";
+
+        $aggregate_collections = $this->app->make('BoundedContext\Contracts\Projection\AggregateCollections\Projector');
+        echo "\nAggregateCollections: " .
+            $aggregate_collections->projection()->version() .
+            " of " .
+            $aggregate_collections->projection()->count()
+        ;
+
+        $active_usernames = $this->app->make('Domain\Test\Projection\ActiveUsernames\Projector');
+        echo "\nActiveUsernames: " .
+            $active_usernames->projection()->version() .
+            " of " .
+            $active_usernames->projection()->count()
+        ;
+
+        $active_emails = $this->app->make('Domain\Test\Projection\ActiveEmails\Projector');
+        echo "\nActiveEmails: " .
+            $active_emails->projection()->version() .
+            " of " .
+            $active_emails->projection()->count()
+        ;
+        echo "</pre>";
+
+        dd($this->app->make('BoundedContext\Contracts\Log'));
     }
 }

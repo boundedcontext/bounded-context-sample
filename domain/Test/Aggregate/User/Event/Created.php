@@ -2,6 +2,7 @@
 
 namespace Domain\Test\Aggregate\User\Event;
 
+use BoundedContext\Contracts\Event;
 use BoundedContext\ValueObject\Uuid;
 use BoundedContext\Event\AbstractEvent;
 
@@ -9,7 +10,7 @@ use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\EncryptedPassword;
 use Domain\Test\ValueObject\Username;
 
-class Created extends AbstractEvent
+class Created extends AbstractEvent implements Event
 {
     public $username;
     public $email;

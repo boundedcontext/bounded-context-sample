@@ -2,11 +2,12 @@
 
 namespace Domain\Test\Aggregate\User\Event;
 
+use BoundedContext\Contracts\Event;
 use BoundedContext\ValueObject\Uuid;
 use BoundedContext\Event\AbstractEvent;
 use Domain\Test\ValueObject\Username;
 
-class UsernameChanged extends AbstractEvent
+class UsernameChanged extends AbstractEvent implements Event
 {
     public $old_username;
     public $new_username;
