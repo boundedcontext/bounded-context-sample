@@ -23,4 +23,9 @@ class EmailAddress implements \BoundedContext\Contracts\ValueObject
     {
         return $this->toString();
     }
+
+    public static function deserialize($email)
+    {
+        return new EmailAddress($email);
+    }
 }

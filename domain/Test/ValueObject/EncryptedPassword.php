@@ -4,9 +4,9 @@ class EncryptedPassword implements \BoundedContext\Contracts\ValueObject
 {
     private $password;
 
-    public function __construct(Password $password)
+    public function __construct($password)
     {
-        $this->password = strrev($password->toString());
+        $this->password = $password;
     }
 
     public function toString()
@@ -14,8 +14,18 @@ class EncryptedPassword implements \BoundedContext\Contracts\ValueObject
         return $this->password;
     }
 
+    public function encrypt()
+    {
+        $this->password = strrev($this->password);
+    }
+
     public function serialize()
     {
         return $this->toString();
+    }
+
+    public static function deserialize($password)
+    {
+        return new EncryptedPassword($password);
     }
 }

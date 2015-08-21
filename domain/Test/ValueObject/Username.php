@@ -25,4 +25,9 @@ class Username implements \BoundedContext\Contracts\ValueObject
     {
         return $this->toString();
     }
+
+    public static function deserialize($username)
+    {
+        return new Username($username);
+    }
 }

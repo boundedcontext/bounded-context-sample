@@ -4,6 +4,7 @@ namespace Infrastructure;
 
 use BoundedContext\Collection\Collectable;
 use BoundedContext\Log\Item;
+use BoundedContext\Map\Map;
 use BoundedContext\Stream\Stream;
 use BoundedContext\ValueObject\DateTime;
 use BoundedContext\ValueObject\Uuid;
@@ -12,11 +13,17 @@ use BoundedContext\ValueObject\Version;
 
 class Log implements \BoundedContext\Contracts\Log
 {
+    private $event_map;
     private $items;
 
-    public function __construct(Collection $items)
+    public function __construct(Map $event_map, Collection $items)
     {
-        $this->items = $items;
+        $this->event_map = $event_map;
+
+        foreach($items as $item)
+        {
+            $this->items[] = json_encode($item->serialize());
+        }
     }
 
     public function get_stream(Uuid $id = null)
@@ -42,8 +49,10 @@ class Log implements \BoundedContext\Contracts\Log
             $collect = 1;
         }
 
-        foreach($this->items as $item)
+        foreach($this->items as $serialized_item)
         {
+            $serialized_item = json_decode($serialized_item, true);
+
             if($items->count() >= $limit)
             {
                 return $items;
@@ -51,10 +60,22 @@ class Log implements \BoundedContext\Contracts\Log
 
             if($collect)
             {
+                $type_id = new Uuid($serialized_item['type_id']);
+                $event_class = $this->event_map->get_event_class($type_id);
+
+                $item = new Item(
+                    new Uuid($serialized_item['id']),
+                    $type_id,
+                    new DateTime($serialized_item['occurred_at']),
+                    new Version(1),
+                    $event_class::deserialize($serialized_item['event'])
+                );
+
                 $items->append($item);
             }
 
-            if(is_null($id) || $item->id()->equals($id))
+            $item_id = new Uuid($serialized_item['id']);
+            if(is_null($id) || $item_id->equals($id))
             {
                 $collect = 1;
             }
@@ -65,15 +86,17 @@ class Log implements \BoundedContext\Contracts\Log
 
     public function append(Collectable $event)
     {
+        $type_id = $this->event_map->get_id($event);
+
         $item = new Item(
             Uuid::generate(),
-            Uuid::generate(),
+            $type_id,
             DateTime::now(),
             new Version(1),
             $event
         );
 
-        $this->items->append($item);
+        $this->items[] = json_encode($item->serialize());
 
         return $item;
     }
