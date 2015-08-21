@@ -5,8 +5,10 @@ namespace Infrastructure;
 use BoundedContext\Collection\Collectable;
 use BoundedContext\Log\Item;
 use BoundedContext\Stream\Stream;
+use BoundedContext\ValueObject\DateTime;
 use BoundedContext\ValueObject\Uuid;
 use BoundedContext\Collection\Collection;
+use BoundedContext\ValueObject\Version;
 
 class Log implements \BoundedContext\Contracts\Log
 {
@@ -66,8 +68,8 @@ class Log implements \BoundedContext\Contracts\Log
         $item = new Item(
             Uuid::generate(),
             Uuid::generate(),
-            new \DateTime,
-            1,
+            DateTime::now(),
+            new Version(1),
             $event
         );
 
