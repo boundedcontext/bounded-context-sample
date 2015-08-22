@@ -4,7 +4,6 @@ use BoundedContext\Contracts\Upgrader;
 use BoundedContext\Contracts\Schema;
 
 use BoundedContext\Upgrader\AbstractUpgrader;
-use Domain\Test\Aggregate\User\Event;
 
 class UsernameChanged extends AbstractUpgrader implements Upgrader
 {
