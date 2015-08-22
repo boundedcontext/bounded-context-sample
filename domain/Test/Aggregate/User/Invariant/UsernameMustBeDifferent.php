@@ -19,7 +19,7 @@ class UsernameMustBeDifferent implements Invariant
 
     public function is_satisfied()
     {
-        return ($this->state->username->toString() !== $this->new_username->toString());
+        return ($this->state->username->serialize() !== $this->new_username->serialize());
     }
 
     public function assert()

@@ -16,23 +16,18 @@ class Password implements \BoundedContext\Contracts\ValueObject
 
     public function encrypt()
     {
-        $encrypted_password = new EncryptedPassword($this->toString());
+        $encrypted_password = new EncryptedPassword($this->password);
         $encrypted_password->encrypt();
 
         return $encrypted_password;
     }
 
-    public function toString()
+    public function serialize()
     {
         return $this->password;
     }
 
-    public function serialize()
-    {
-        return $this->toString();
-    }
-
-    public static function deserialize($password)
+    public static function deserialize($password = null)
     {
         return new Password($password);
     }

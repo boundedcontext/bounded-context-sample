@@ -14,17 +14,12 @@ class EmailAddress implements \BoundedContext\Contracts\ValueObject
         $this->email = $email;
     }
 
-    public function toString()
+    public function serialize()
     {
         return $this->email;
     }
 
-    public function serialize()
-    {
-        return $this->toString();
-    }
-
-    public static function deserialize($email)
+    public static function deserialize($email = null)
     {
         return new EmailAddress($email);
     }

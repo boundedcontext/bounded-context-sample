@@ -29,23 +29,23 @@ class ActiveUsernames extends AbstractProjection implements \Domain\Test\Project
 
     public function exists(Username $username)
     {
-        return array_key_exists($username->toString(), $this->active_usernames);
+        return array_key_exists($username->serialize(), $this->active_usernames);
     }
 
     public function add(Uuid $id, Username $username)
     {
         if($this->exists($username))
         {
-            throw new \Exception("The username [$username->toString()] is already active.");
+            throw new \Exception("The username [$username->serialize()] is already active.");
         }
 
-        $this->aggregate_index[$id->toString()] = $username->toString();
-        $this->active_usernames[$username->toString()] = 1;
+        $this->aggregate_index[$id->serialize()] = $username->serialize();
+        $this->active_usernames[$username->serialize()] = 1;
     }
 
     public function remove(Uuid $id)
     {
-        $username = $this->aggregate_index[$id->toString()];
+        $username = $this->aggregate_index[$id->serialize()];
 
         if(!$this->exists(new Username($username)))
         {
@@ -53,7 +53,7 @@ class ActiveUsernames extends AbstractProjection implements \Domain\Test\Project
         }
 
         unset($this->active_usernames[$username]);
-        unset($this->aggregate_index[$id->toString()]);
+        unset($this->aggregate_index[$id->serialize()]);
     }
 
     public function replace(Uuid $id, Username $old_username, Username $new_username)

@@ -28,17 +28,17 @@ class Projection extends AbstractProjection implements AggregateCollections\Proj
 
     public function exists(Uuid $id)
     {
-        return array_key_exists($id->toString(), $this->aggregates);
+        return array_key_exists($id->serialize(), $this->aggregates);
     }
 
     public function get(Uuid $id)
     {
         if(!$this->exists($id))
         {
-            throw new \Exception("Aggregate [".$id->toString()."] does not exist.");
+            throw new \Exception("Aggregate [".$id->serialize()."] does not exist.");
         }
 
-        $items = $this->aggregates[$id->toString()];
+        $items = $this->aggregates[$id->serialize()];
 
         $events = new Collection();
         foreach($items as $item)
@@ -55,10 +55,10 @@ class Projection extends AbstractProjection implements AggregateCollections\Proj
 
         if(!$this->exists($id))
         {
-            $this->aggregates[$id->toString()] = new Collection();
+            $this->aggregates[$id->serialize()] = new Collection();
         }
 
-        $this->aggregates[$id->toString()]->append($item);
+        $this->aggregates[$id->serialize()]->append($item);
     }
 
     public function append_collection(Collection $items)

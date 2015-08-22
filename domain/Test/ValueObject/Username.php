@@ -16,17 +16,12 @@ class Username implements \BoundedContext\Contracts\ValueObject
         $this->username = $username;
     }
 
-    public function toString()
+    public function serialize()
     {
         return $this->username;
     }
 
-    public function serialize()
-    {
-        return $this->toString();
-    }
-
-    public static function deserialize($username)
+    public static function deserialize($username = null)
     {
         return new Username($username);
     }
