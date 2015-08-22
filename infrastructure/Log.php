@@ -5,6 +5,7 @@ namespace Infrastructure;
 use BoundedContext\Collection\Collectable;
 use BoundedContext\Log\Item;
 use BoundedContext\Map\Map;
+use BoundedContext\Schema\Schema;
 use BoundedContext\Stream\Stream;
 use BoundedContext\ValueObject\DateTime;
 use BoundedContext\ValueObject\Uuid;
@@ -64,12 +65,24 @@ class Log implements \BoundedContext\Contracts\Log
                 $type_id = new Uuid($serialized_item['type_id']);
                 $event_class = $this->event_map->get_event_class($type_id);
 
+                // Some Lookup Strategy
+                $aggregate_prefix = substr($event_class, 0, strpos($event_class, "Event"));
+                $upgrader_suffix = explode('Event\\', $event_class)[1];
+                $upgrader_class = $aggregate_prefix . 'Upgrader\\' . $upgrader_suffix;
+
+                $upgraded_serialized_event = new $upgrader_class(
+                    new Schema($serialized_item['event']),
+                    new Version($serialized_item['version'])
+                );
+
+                $upgraded_serialized_event->run();
+
                 $item = new Item(
                     new Uuid($serialized_item['id']),
-                    $type_id,
+                    new Uuid($serialized_item['type_id']),
                     new DateTime($serialized_item['occurred_at']),
-                    new Version(1),
-                    $event_class::deserialize($serialized_item['event'])
+                    $upgraded_serialized_event->version(),
+                    $event_class::deserialize($upgraded_serialized_event->schema())
                 );
 
                 $items->append($item);
@@ -89,12 +102,25 @@ class Log implements \BoundedContext\Contracts\Log
     public function append(Collectable $event)
     {
         $type_id = $this->event_map->get_id($event);
+        $event_class = $this->event_map->get_event_class($type_id);
+
+        // Some Lookup Strategy
+        $aggregate_prefix = substr($event_class, 0, strpos($event_class, "Event"));
+        $upgrader_suffix = explode('Event\\', $event_class)[1];
+        $upgrader_class = $aggregate_prefix . 'Upgrader\\' . $upgrader_suffix;
+
+        $upgraded_serialized_event = new $upgrader_class(
+            new Schema(),
+            new Version()
+        );
+
+        $upgraded_serialized_event->run();
 
         $item = new Item(
             Uuid::generate(),
             $type_id,
             DateTime::now(),
-            new Version(1),
+            $upgraded_serialized_event->version(),
             $event
         );
 

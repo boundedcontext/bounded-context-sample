@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use BoundedContext\Schema\Schema;
+use BoundedContext\ValueObject\Version;
+use Domain\Test\Aggregate\User\Upgrader\Created;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
 use Domain\Test\ValueObject\Username;
@@ -32,13 +35,6 @@ class TestController extends Controller
             new EmailAddress('bphilson@gmail.com'),
             new Password('roflcopter')
         ));
-
-        /*$command = new Command\Create(
-            Uuid::generate(),
-            new Username('bphilson'),
-            new EmailAddress('bphilson@gmail.com'),
-            new Password('roflcopter')
-        );*/
 
         $this->bus->dispatch(new Command\ChangeUsername(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
