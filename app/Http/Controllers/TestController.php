@@ -74,6 +74,7 @@ class TestController extends Controller
         ;
         echo "</pre>";
 
+        dd($active_emails);
         dd($this->app->make('BoundedContext\Contracts\Log'));
     }
 }

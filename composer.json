@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "rhumsaa/uuid": "~2.8@dev"
+        "ramsey/uuid": "~2.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

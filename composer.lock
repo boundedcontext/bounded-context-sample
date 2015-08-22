@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dec945525a18d4c041002723230dd4c5",
+    "hash": "dde3fd596865325bd33edb40de0ebacc",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -893,16 +893,16 @@
             "time": "2015-07-16 15:26:57"
         },
         {
-            "name": "rhumsaa/uuid",
+            "name": "ramsey/uuid",
             "version": "2.8.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ramsey/rhumsaa-uuid.git",
+                "url": "https://github.com/ramsey/uuid.git",
                 "reference": "9c1e2d34bdefd42608c612e08d6e1da1e13a3530"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/rhumsaa-uuid/zipball/9c1e2d34bdefd42608c612e08d6e1da1e13a3530",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/9c1e2d34bdefd42608c612e08d6e1da1e13a3530",
                 "reference": "9c1e2d34bdefd42608c612e08d6e1da1e13a3530",
                 "shasum": ""
             },
@@ -956,7 +956,6 @@
                 "identifier",
                 "uuid"
             ],
-            "abandoned": "ramsey/uuid",
             "time": "2015-07-23 19:00:41"
         },
         {
@@ -2991,9 +2990,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "rhumsaa/uuid": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
