@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
+use BoundedContext\Laravel\Log\InMemoryLog;
 use BoundedContext\Map\Map;
-use Infrastructure\Log;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Config;
@@ -20,12 +20,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             'Illuminate\Contracts\Bus\Dispatcher',
-            'Infrastructure\Dispatcher'
+            'BoundedContext\Laravel\Bus\Dispatcher'
         );
 
         $this->app->singleton('BoundedContext\Contracts\Log', function($app)
         {
-            return new Log(
+            return new InMemoryLog(
                 new Map(Config::get('events')),
                 File::get(__DIR__ . '/../../infrastructure/event_log.json')
             );
