@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use BoundedContext\Schema\Schema;
-use BoundedContext\ValueObject\Version;
-use Domain\Test\Aggregate\User\Upgrader\Created;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
 use Domain\Test\ValueObject\Username;
