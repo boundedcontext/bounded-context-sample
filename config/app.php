@@ -144,6 +144,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        BoundedContext\Laravel\Providers\BoundedContextProvider::class,
+
     ],
 
     /*

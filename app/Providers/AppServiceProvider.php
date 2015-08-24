@@ -18,11 +18,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(
-            'Illuminate\Contracts\Bus\Dispatcher',
-            'BoundedContext\Laravel\Bus\Dispatcher'
-        );
-
         $this->app->singleton('BoundedContext\Contracts\Log', function($app)
         {
             return new InMemoryLog(
@@ -43,11 +38,6 @@ class AppServiceProvider extends ServiceProvider
             return $projector;
         });
 
-        $this->app->bind(
-            'Domain\Test\Projection\ActiveUsernames\Projection',
-            'Infrastructure\Projection\ActiveUsernames'
-        );
-
         $this->app->singleton('Domain\Test\Projection\ActiveUsernames\Projector', function($app)
         {
             $projector = new \Domain\Test\Projection\ActiveUsernames\Projector(
@@ -59,11 +49,6 @@ class AppServiceProvider extends ServiceProvider
 
             return $projector;
         });
-
-        $this->app->bind(
-            'Domain\Test\Projection\ActiveEmails\Projection',
-            'Infrastructure\Projection\ActiveEmails'
-        );
 
         $this->app->singleton('Domain\Test\Projection\ActiveEmails\Projector', function($app)
         {

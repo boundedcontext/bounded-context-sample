@@ -3,6 +3,7 @@
 namespace Domain\Test\Aggregate\User;
 
 use BoundedContext\Aggregate\AbstractAggregate;
+
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
 use Domain\Test\ValueObject\Username;
@@ -46,6 +47,8 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\A
     {
         (new Invariant\IsNotDeleted($this->state))->assert();
 
-        $this->apply(new Event\Deleted($this->id()));
+        $this->apply(
+            new Event\Deleted($this->id())
+        );
     }
 }
