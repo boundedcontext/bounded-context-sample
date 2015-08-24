@@ -2,13 +2,24 @@
 
 return [
 
-    \BoundedContext\Contracts\Projection\AggregateCollections\Projection::class =>
-        \Infrastructure\Core\Projection\AggregateCollections\Projection::class,
+    'core' =>
+    [
+        \BoundedContext\Contracts\Projection\AggregateCollections\Projection::class =>
+            \Infrastructure\Core\Projection\AggregateCollections\Projection::class,
+    ],
 
-    \Domain\Test\Projection\ActiveEmails\Projection::class =>
-        \Infrastructure\Domain\Projection\ActiveEmails::class,
+    'app' =>
+    [
+        \App\Projections\Users\Projection::class =>
+            \Infrastructure\App\Projection\Users::class,
+    ],
 
-    \Domain\Test\Projection\ActiveUsernames\Projection::class =>
-        \Infrastructure\Domain\Projection\ActiveUsernames::class
+    'domain' =>
+    [
+        \Domain\Test\Projection\ActiveEmails\Projection::class =>
+            \Infrastructure\Domain\Projection\ActiveEmails::class,
 
+        \Domain\Test\Projection\ActiveUsernames\Projection::class =>
+            \Infrastructure\Domain\Projection\ActiveUsernames::class,
+    ]
 ];

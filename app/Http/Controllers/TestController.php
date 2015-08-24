@@ -71,7 +71,10 @@ class TestController extends Controller
         ;
         echo "</pre>";
 
-        dd($active_emails);
+        $projector = $this->app->make('App\Projections\Users\Projector');
+        $projector->play();
+        dd($projector);
+
         dd($this->app->make('BoundedContext\Contracts\Log'));
     }
 }
