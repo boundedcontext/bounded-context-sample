@@ -1,6 +1,6 @@
 <?php
 
-namespace Infrastructure\Projection\AggregateCollections;
+namespace Infrastructure\Core\Projection\AggregateCollections;
 
 use BoundedContext\Contracts\Log;
 use BoundedContext\Projector\AbstractProjector;

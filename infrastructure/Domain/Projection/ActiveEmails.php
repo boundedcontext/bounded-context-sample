@@ -1,6 +1,6 @@
 <?php
 
-namespace Infrastructure\Projection;
+namespace Infrastructure\Domain\Projection;
 
 use BoundedContext\Projection\AbstractProjection;
 use BoundedContext\ValueObject\Uuid;

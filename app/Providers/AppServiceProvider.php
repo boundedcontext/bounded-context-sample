@@ -28,9 +28,9 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton('BoundedContext\Contracts\Projection\AggregateCollections\Projector', function($app)
         {
-            $projector = new \Infrastructure\Projection\AggregateCollections\Projector(
+            $projector = new \Infrastructure\Core\Projection\AggregateCollections\Projector(
                 $app->make('BoundedContext\Contracts\Log'),
-                new \Infrastructure\Projection\AggregateCollections\Projection()
+                new \Infrastructure\Core\Projection\AggregateCollections\Projection()
             );
 
             $projector->play();
