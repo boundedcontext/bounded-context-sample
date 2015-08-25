@@ -61,4 +61,9 @@ class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection
         $this->remove($id);
         $this->add($id, $new_email);
     }
+
+    public function save()
+    {
+
+    }
 }

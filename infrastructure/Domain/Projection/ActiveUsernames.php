@@ -43,6 +43,11 @@ class ActiveUsernames extends AbstractProjection implements \Domain\Test\Project
         $this->active_usernames[$username->serialize()] = 1;
     }
 
+    public function save()
+    {
+
+    }
+
     public function remove(Uuid $id)
     {
         $username = $this->aggregate_index[$id->serialize()];

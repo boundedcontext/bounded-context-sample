@@ -49,6 +49,11 @@ class Projection extends AbstractProjection implements AggregateCollections\Proj
         return $events;
     }
 
+    public function save()
+    {
+
+    }
+
     public function append(Item $item)
     {
         $id = $item->event()->id();

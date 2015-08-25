@@ -26,6 +26,10 @@ class TestController extends Controller
 
     public function create(Request $request)
     {
+
+        $projector = $this->app->make('BoundedContext\Contracts\Projection\AggregateCollections\Projector');
+        $projector->play();
+
         $this->bus->dispatch(new Command\Create(
             Uuid::generate(),
             new Username('bphilson'),
@@ -33,7 +37,7 @@ class TestController extends Controller
             new Password('roflcopter')
         ));
 
-        $this->bus->dispatch(new Command\ChangeUsername(
+        /*$this->bus->dispatch(new Command\ChangeUsername(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
             new Username('lyonscf2')
         ));
@@ -45,7 +49,7 @@ class TestController extends Controller
 
         $this->bus->dispatch(new Command\Delete(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
-        ));
+        ));*/
 
         echo "<pre>";
 
@@ -71,10 +75,10 @@ class TestController extends Controller
         ;
         echo "</pre>";
 
-        $projector = $this->app->make('App\Projections\Users\Projector');
-        $projector->play();
-        dd($projector);
+        //$projector = $this->app->make('App\Projections\Users\Projector');
+        //$projector->play();
 
+        dd($projector);
         dd($this->app->make('BoundedContext\Contracts\Log'));
     }
 }
