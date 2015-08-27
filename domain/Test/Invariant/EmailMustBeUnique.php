@@ -26,7 +26,7 @@ class EmailMustBeUnique implements Invariant
     {
         if(!$this->is_satisfied())
         {
-            throw new \Exception("The email address [$this->email->toString()] already exists.");
+            throw new \Exception("The email address [".$this->email->serialize()."] already exists.");
         }
     }
 }

@@ -26,7 +26,7 @@ class UsernameMustBeUnique implements Invariant
     {
         if($this->projection->exists($this->username))
         {
-            throw new \Exception("The username [$this->username->toString()] already exists.");
+            throw new \Exception("The username [".$this->username->serialize()."] already exists.");
         }
     }
 }
