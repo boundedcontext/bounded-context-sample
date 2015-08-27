@@ -32,90 +32,6 @@ class TestController extends Controller
 
     public function create(Request $request)
     {
-        /*$log->append_collection(new Collection([
-            new Created(
-                new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
-                new Username('lyonscf'),
-                new EmailAddress('colin@tercet.io'),
-                new EncryptedPassword('lol')
-            ),
-            new Created(
-                new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f7'),
-                new Username('lyonscf'),
-                new EmailAddress('colin@tercet.io'),
-                new EncryptedPassword('lol')
-            ),
-        ]));
-
-        $last_id = Uuid::null();
-
-        echo "Streaming from: ";
-        var_dump($last_id->serialize());
-
-        $stream = $log->get_stream($last_id);
-
-        while($stream->has_next())
-        {
-            $item = $stream->next();
-
-            $last_id = $item->id();
-
-            echo "Found: ";
-            var_dump($last_id->serialize());
-        }
-
-        echo "Executing new Commands...<br>";
-
-        $log->append_collection(new Collection([
-            new Created(
-                new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f8'),
-                new Username('lyonscf'),
-                new EmailAddress('colin@tercet.io'),
-                new EncryptedPassword('lol')
-            ),
-            new Created(
-                new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f9'),
-                new Username('lyonscf'),
-                new EmailAddress('colin@tercet.io'),
-                new EncryptedPassword('lol')
-            ),
-        ]));
-
-        echo "State of Log";
-        var_dump($this->app->make('BoundedContext\Contracts\Log')->query()->get());
-
-        echo "Streaming from: ";
-        var_dump($last_id->serialize());
-
-        $stream = $log->get_stream($last_id);
-
-        echo "Found: ";
-        while($stream->has_next())
-        {
-            $item = $stream->next();
-
-            $last_id = $item->id();
-
-            var_dump($last_id->serialize());
-        }
-
-        echo "Streaming from: ";
-        var_dump($last_id->serialize());
-
-        $stream = $log->get_stream($last_id);
-
-        echo "Found: ";
-        while($stream->has_next())
-        {
-            $item = $stream->next();
-
-            $last_id = $item->id();
-
-            var_dump($last_id->serialize());
-        }
-
-        dd('lol');*/
-
         $log = $this->app->make('BoundedContext\Contracts\Log');
         $log->reset();
 
@@ -170,7 +86,7 @@ class TestController extends Controller
         //$projector = $this->app->make('App\Projections\Users\Projector');
         //$projector->play();
         //dd($projector);
-        
+
         dd($this->app->make('BoundedContext\Contracts\Log'));
     }
 }
