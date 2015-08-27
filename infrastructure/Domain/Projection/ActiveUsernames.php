@@ -2,64 +2,53 @@
 
 namespace Infrastructure\Domain\Projection;
 
-use BoundedContext\Projection\AbstractProjection;
+use BoundedContext\Laravel\Illuminate\Projection\AbstractProjection;
 use BoundedContext\ValueObject\Uuid;
-use BoundedContext\ValueObject\Version;
 use Domain\Test\ValueObject\Username;
 
 class ActiveUsernames extends AbstractProjection implements \Domain\Test\Projection\ActiveUsernames\Projection
 {
-    private $active_usernames;
-    private $aggregate_index;
-
-    public function __construct()
+    protected function table()
     {
-        parent::__construct(Uuid::null(), new Version(0), new Version(0));
-
-        $this->active_usernames = [];
-        $this->aggregate_index = [];
-    }
-
-    public function reset()
-    {
-        parent::reset();
-
-        $this->active_usernames = [];
-        $this->aggregate_index = [];
+        return 'projections_domain_test_active_usernames';
     }
 
     public function exists(Username $username)
     {
-        return array_key_exists($username->serialize(), $this->active_usernames);
+        $username_count = $this->query()
+            ->where('username', $username->serialize())
+            ->count();
+
+        return $username_count > 0;
     }
 
     public function add(Uuid $id, Username $username)
     {
         if($this->exists($username))
         {
-            throw new \Exception("The username [$username->serialize()] is already active.");
+            throw new \Exception("The username [".$username->serialize()."] is already active.");
         }
 
-        $this->aggregate_index[$id->serialize()] = $username->serialize();
-        $this->active_usernames[$username->serialize()] = 1;
-    }
-
-    public function save()
-    {
-
+        $this->query()->insert([
+            'aggregate_id' => $id->serialize(),
+            'username' => $username->serialize()
+        ]);
     }
 
     public function remove(Uuid $id)
     {
-        $username = $this->aggregate_index[$id->serialize()];
+        $username_row = $this->query()
+            ->where('aggregate_id', $id->serialize())
+            ->first();
 
-        if(!$this->exists(new Username($username)))
+        if(!$username_row)
         {
-            throw new \Exception("The username [$username] is not active.");
+            throw new \Exception("The id [".$id->serialize()."] does not have an active username.");
         }
 
-        unset($this->active_usernames[$username]);
-        unset($this->aggregate_index[$id->serialize()]);
+        $this->query()
+            ->where('aggregate_id', $id->serialize())
+            ->delete();
     }
 
     public function replace(Uuid $id, Username $old_username, Username $new_username)

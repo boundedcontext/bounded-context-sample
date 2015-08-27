@@ -2,69 +2,58 @@
 
 namespace Infrastructure\Domain\Projection;
 
-use BoundedContext\Projection\AbstractProjection;
+use BoundedContext\Laravel\Illuminate\Projection\AbstractProjection;
 use BoundedContext\ValueObject\Uuid;
-use BoundedContext\ValueObject\Version;
 use Domain\Test\ValueObject\EmailAddress;
 
 class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection\ActiveEmails\Projection
 {
-    private $active_emails;
-    private $aggregate_index;
-
-    public function __construct()
+    protected function table()
     {
-        parent::__construct(Uuid::null(), new Version(0), new Version(0));
-
-        $this->active_emails = [];
-        $this->aggregate_index = [];
-    }
-
-    public function reset()
-    {
-        parent::reset();
-
-        $this->active_emails = [];
-        $this->aggregate_index = [];
+        return 'projections_domain_test_active_emails';
     }
 
     public function exists(EmailAddress $email)
     {
-        return array_key_exists($email->serialize(), $this->active_emails);
+        $email_count = $this->query()
+            ->where('email', $email->serialize())
+            ->count();
+
+        return $email_count > 0;
     }
 
     public function add(Uuid $id, EmailAddress $email)
     {
         if($this->exists($email))
         {
-            throw new \Exception("The email [$email->serialize()] is an active email.");
+            throw new \Exception("The email [".$email->serialize()."] is an active email.");
         }
 
-        $this->aggregate_index[$id->serialize()] = $email->serialize();
-        $this->active_emails[$email->serialize()] = 1;
+        $this->query()->insert([
+            'aggregate_id' => $id->serialize(),
+            'email' => $email->serialize()
+        ]);
     }
 
     public function remove(Uuid $id)
     {
-        $email = $this->aggregate_index[$id->serialize()];
+        $email_row = $this->query()
+            ->where('aggregate_id', $id->serialize())
+            ->first();
 
-        if(!$this->exists(new EmailAddress($email)))
+        if(!$email_row)
         {
-            throw new \Exception("The email [$email] is not an active email.");
+            throw new \Exception("The id [".$id->serialize()."] does not have an active email.");
         }
 
-        unset($this->active_emails[$email]);
-        unset($this->aggregate_index[$id->serialize()]);
+        $this->query()
+            ->where('aggregate_id', $id->serialize())
+            ->delete();
     }
 
     public function replace(Uuid $id, EmailAddress $old_email, EmailAddress $new_email)
     {
         $this->remove($id);
         $this->add($id, $new_email);
-    }
-
-    public function save()
-    {
-        // No need, it's in memory.
     }
 }

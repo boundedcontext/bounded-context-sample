@@ -38,6 +38,12 @@ class TestController extends Controller
         $aggregate_collections = $this->app->make('BoundedContext\Projector\AggregateCollections');
         $aggregate_collections->projection()->reset();
 
+        $active_usernames = $this->app->make('Domain\Test\Projection\ActiveUsernames\Projector');
+        $active_usernames->projection()->reset();
+
+        $active_emails = $this->app->make('Domain\Test\Projection\ActiveEmails\Projector');
+        $active_emails->projection()->reset();
+
         $this->bus->dispatch(new Command\Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
             new Username('bphilson'),
@@ -46,7 +52,7 @@ class TestController extends Controller
         ));
 
         $this->bus->dispatch(new Command\Create(
-            new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
+            new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f7'),
             new Username('bphilson2'),
             new EmailAddress('bphilson1@gmail.com'),
             new Password('roflcopter')

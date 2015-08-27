@@ -22,25 +22,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Projection.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/Test/Projection/ActiveEmails/Projection.php">
+      <file leaf-file-name="ActiveEmails.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveEmails.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.166667">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state vertical-scroll-proportion="-18.333334">
+              <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="50" selection-end-column="23" />
               <folding>
-                <element signature="e#55#91#0#PHP" expanded="true" />
+                <element signature="e#52#120#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActiveEmails.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveEmails.php">
+      <file leaf-file-name="ActiveUsernames.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveUsernames.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.1666665">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state vertical-scroll-proportion="-19.833334">
+              <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
               <folding>
-                <element signature="e#52#101#0#PHP" expanded="true" />
+                <element signature="e#52#120#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -49,8 +49,8 @@
       <file leaf-file-name="TestController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5597484">
-              <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.5345912">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding>
                 <element signature="e#40#81#0#PHP" expanded="true" />
               </folding>
@@ -91,14 +91,11 @@
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/ValueObject/Version.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Memory/Projection/AggregateCollections.php" />
-        <option value="$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveEmails.php" />
-        <option value="$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveUsernames.php" />
         <option value="$PROJECT_DIR$/infrastructure/App/Projection/Users.php" />
         <option value="$PROJECT_DIR$/domain/Test/Aggregate/User/Upgrader/Created.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Upgrader/Upgrading.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/ValueObject/Uuid.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Log.php" />
-        <option value="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Illuminate/Projection/AggregateCollections.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Aggregate/AbstractAggregate.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Projection/AbstractProjection.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Projection.php" />
@@ -109,10 +106,13 @@
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Projector/AbstractProjector.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Stream/Stream.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Illuminate/Log.php" />
-        <option value="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Illuminate/Projection/AbstractProjection.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Bus/Dispatcher.php" />
         <option value="$PROJECT_DIR$/domain/Test/Invariant/UsernameMustBeUnique.php" />
         <option value="$PROJECT_DIR$/domain/Test/Invariant/EmailMustBeUnique.php" />
+        <option value="$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveEmails.php" />
+        <option value="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Illuminate/Projection/AggregateCollections.php" />
+        <option value="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Illuminate/Projection/AbstractProjection.php" />
+        <option value="$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveUsernames.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
       </list>
     </option>
@@ -583,28 +583,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Invariant" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1055,14 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveUsernames.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.5">
-          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Log.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.166667">
@@ -1215,26 +1185,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/workbench/bounded-context-laravel/src/Illuminate/Projection/AbstractProjection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43396226">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding>
-            <element signature="e#64#105#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/workbench/bounded-context-laravel/src/Illuminate/Projection/AggregateCollections.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22012578">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="e#64#105#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/Test/Projection/ActiveEmails/Projector.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22012578">
@@ -1255,31 +1205,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Test/Projection/ActiveEmails/Projection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.166667">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#55#91#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/infrastructure/event_log.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.754717">
           <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveEmails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.1666665">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#52#101#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1299,10 +1229,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Test/Projection/ActiveEmails/Projection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.166667">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#55#91#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/workbench/bounded-context-laravel/src/Illuminate/Projection/AggregateCollections.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.666667">
+          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+          <folding>
+            <element signature="e#64#105#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/workbench/bounded-context-laravel/src/Illuminate/Projection/AbstractProjection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.263158">
+          <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+          <folding>
+            <element signature="e#64#105#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveEmails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.333334">
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="50" selection-end-column="23" />
+          <folding>
+            <element signature="e#52#120#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/Domain/Projection/ActiveUsernames.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.833334">
+          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+          <folding>
+            <element signature="e#52#120#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5597484">
-          <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.5345912">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="e#40#81#0#PHP" expanded="true" />
           </folding>
