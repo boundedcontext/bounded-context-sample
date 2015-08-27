@@ -4,6 +4,7 @@ namespace Infrastructure\Domain\Projection;
 
 use BoundedContext\Projection\AbstractProjection;
 use BoundedContext\ValueObject\Uuid;
+use BoundedContext\ValueObject\Version;
 use Domain\Test\ValueObject\Username;
 
 class ActiveUsernames extends AbstractProjection implements \Domain\Test\Projection\ActiveUsernames\Projection
@@ -13,7 +14,7 @@ class ActiveUsernames extends AbstractProjection implements \Domain\Test\Project
 
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct(Uuid::null(), new Version(0), new Version(0));
 
         $this->active_usernames = [];
         $this->aggregate_index = [];

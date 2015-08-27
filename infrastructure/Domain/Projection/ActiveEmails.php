@@ -4,6 +4,7 @@ namespace Infrastructure\Domain\Projection;
 
 use BoundedContext\Projection\AbstractProjection;
 use BoundedContext\ValueObject\Uuid;
+use BoundedContext\ValueObject\Version;
 use Domain\Test\ValueObject\EmailAddress;
 
 class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection\ActiveEmails\Projection
@@ -13,7 +14,7 @@ class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection
 
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct(Uuid::null(), new Version(0), new Version(0));
 
         $this->active_emails = [];
         $this->aggregate_index = [];
@@ -64,6 +65,6 @@ class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection
 
     public function save()
     {
-
+        // No need, it's in memory.
     }
 }

@@ -3,8 +3,8 @@
 return [
 
     'core' => [
-        \BoundedContext\Contracts\Projection\AggregateCollections\Projection::class =>
-            \Infrastructure\Core\Projection\AggregateCollections\Projection::class,
+        \BoundedContext\Contracts\Projection\AggregateCollections::class =>
+            \BoundedContext\Laravel\Illuminate\Projection\AggregateCollections::class,
     ],
 
     'app' => [

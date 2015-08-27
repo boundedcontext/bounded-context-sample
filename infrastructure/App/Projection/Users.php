@@ -5,6 +5,7 @@ namespace Infrastructure\App\Projection;
 use BoundedContext\Projection\AbstractProjection;
 use BoundedContext\ValueObject\DateTime;
 use BoundedContext\ValueObject\Uuid;
+use BoundedContext\ValueObject\Version;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\EncryptedPassword;
 use Domain\Test\ValueObject\Username;
@@ -15,7 +16,7 @@ class Users extends AbstractProjection implements \App\Projections\Users\Project
 
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct(Uuid::null(), new Version(0), new Version(0));
 
         $this->users = [];
     }
@@ -68,5 +69,10 @@ class Users extends AbstractProjection implements \App\Projections\Users\Project
         }
 
         $this->users[$id->serialize()]['deleted_at'] = $occurred_at->serialize();
+    }
+
+    public function save()
+    {
+
     }
 }
