@@ -70,7 +70,7 @@ class TestController extends Controller
         ));
 
         $users->play();
-        
+
         dd($this->app->make('BoundedContext\Contracts\Log'));
     }
 }
