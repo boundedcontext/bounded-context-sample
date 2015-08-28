@@ -22,6 +22,20 @@ class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection
         return $email_count > 0;
     }
 
+    public function get(Uuid $id)
+    {
+        $email_row = $this->query()
+            ->where('user_id', $id->serialize())
+            ->first();
+
+        if(!$email_row)
+        {
+            throw new \Exception("The id [".$id->serialize()."] does not have an active email.");
+        }
+
+        return $email_row->email;
+    }
+
     public function add(Uuid $id, EmailAddress $email)
     {
         if($this->exists($email))
@@ -30,24 +44,17 @@ class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection
         }
 
         $this->query()->insert([
-            'aggregate_id' => $id->serialize(),
+            'user_id' => $id->serialize(),
             'email' => $email->serialize()
         ]);
     }
 
     public function remove(Uuid $id)
     {
-        $email_row = $this->query()
-            ->where('aggregate_id', $id->serialize())
-            ->first();
-
-        if(!$email_row)
-        {
-            throw new \Exception("The id [".$id->serialize()."] does not have an active email.");
-        }
+        $email = $this->get($id);
 
         $this->query()
-            ->where('aggregate_id', $id->serialize())
+            ->where('email', $email)
             ->delete();
     }
 

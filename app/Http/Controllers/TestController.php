@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use BoundedContext\Collection\Collection;
-use BoundedContext\Log\Item;
-use BoundedContext\ValueObject\DateTime;
-use BoundedContext\ValueObject\Version;
-use Domain\Test\Aggregate\User\Event\Created;
-use Domain\Test\ValueObject\EmailAddress;
-use Domain\Test\ValueObject\EncryptedPassword;
-use Domain\Test\ValueObject\Password;
 use Domain\Test\ValueObject\Username;
+use Domain\Test\ValueObject\EmailAddress;
+use Domain\Test\ValueObject\Password;
 use Domain\Test\Aggregate\User\Command;
 
 use Illuminate\Contracts\Foundation\Application;
@@ -96,9 +90,9 @@ class TestController extends Controller
         ;
         echo "</pre>";
 
-        //$projector = $this->app->make('App\Projections\Users\Projector');
-        //$projector->play();
-        //dd($projector);
+        $projector = $this->app->make('App\Projections\Users\Projector');
+        $projector->play();
+        dd($projector);
 
         dd($this->app->make('BoundedContext\Contracts\Log'));
     }

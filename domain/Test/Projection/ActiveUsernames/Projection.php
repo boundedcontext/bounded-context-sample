@@ -9,6 +9,8 @@ interface Projection extends \BoundedContext\Contracts\Projection
 {
     public function exists(Username $username);
 
+    public function get(Uuid $id);
+
     public function add(Uuid $id, Username $username);
 
     public function remove(Uuid $id);

@@ -22,6 +22,20 @@ class ActiveUsernames extends AbstractProjection implements \Domain\Test\Project
         return $username_count > 0;
     }
 
+    public function get(Uuid $id)
+    {
+        $username_row = $this->query()
+            ->where('user_id', $id->serialize())
+            ->first();
+
+        if(!$username_row)
+        {
+            throw new \Exception("The id [".$id->serialize()."] does not have an active username.");
+        }
+
+        return $username_row->username;
+    }
+
     public function add(Uuid $id, Username $username)
     {
         if($this->exists($username))
@@ -30,24 +44,17 @@ class ActiveUsernames extends AbstractProjection implements \Domain\Test\Project
         }
 
         $this->query()->insert([
-            'aggregate_id' => $id->serialize(),
+            'user_id' => $id->serialize(),
             'username' => $username->serialize()
         ]);
     }
 
     public function remove(Uuid $id)
     {
-        $username_row = $this->query()
-            ->where('aggregate_id', $id->serialize())
-            ->first();
-
-        if(!$username_row)
-        {
-            throw new \Exception("The id [".$id->serialize()."] does not have an active username.");
-        }
+        $username = $this->get($id);
 
         $this->query()
-            ->where('aggregate_id', $id->serialize())
+            ->where('username', $username)
             ->delete();
     }
 
