@@ -19,8 +19,8 @@ class Projector extends AbstractProjector
             $event->id(),
             $item->occurred_at(),
             $event->username,
-            $event->password,
-            $event->email
+            $event->email,
+            $event->password
         );
     }
 

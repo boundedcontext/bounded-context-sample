@@ -38,6 +38,9 @@ class TestController extends Controller
         $active_emails = $this->app->make('Domain\Test\Projection\ActiveEmails\Projector');
         $active_emails->projection()->reset();
 
+        $users = $this->app->make('App\Projections\Users\Projector');
+        $users->projection()->reset();
+
         $this->bus->dispatch(new Command\Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
             new Username('bphilson'),
@@ -66,34 +69,8 @@ class TestController extends Controller
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
         ));
 
-        echo "<pre>";
-
-        $aggregate_collections = $this->app->make('BoundedContext\Projector\AggregateCollections');
-        echo "\nAggregateCollections: " .
-            $aggregate_collections->projection()->version()->serialize() .
-            " of " .
-            $aggregate_collections->projection()->count()->serialize()
-        ;
-
-        $active_usernames = $this->app->make('Domain\Test\Projection\ActiveUsernames\Projector');
-        echo "\nActiveUsernames: " .
-            $active_usernames->projection()->version()->serialize() .
-            " of " .
-            $active_usernames->projection()->count()->serialize()
-        ;
-
-        $active_emails = $this->app->make('Domain\Test\Projection\ActiveEmails\Projector');
-        echo "\nActiveEmails: " .
-            $active_emails->projection()->version()->serialize() .
-            " of " .
-            $active_emails->projection()->count()->serialize()
-        ;
-        echo "</pre>";
-
-        $projector = $this->app->make('App\Projections\Users\Projector');
-        $projector->play();
-        dd($projector);
-
+        $users->play();
+        
         dd($this->app->make('BoundedContext\Contracts\Log'));
     }
 }
