@@ -54,14 +54,14 @@ class TestController extends Controller
             new Password('password')
         ));
 
-        /*$this->bus->dispatch(new Command\Create(
+        $this->bus->dispatch(new Command\Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f7'),
             new Username('bphilson2'),
             new EmailAddress('bphilson1@gmail.com'),
             new Password('roflcopter')
         ));
 
-        /*$this->bus->dispatch(new Command\ChangeUsername(
+        $this->bus->dispatch(new Command\ChangeUsername(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
             new Username('lyonscf2')
         ));
@@ -73,7 +73,7 @@ class TestController extends Controller
 
         $this->bus->dispatch(new Command\Delete(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
-        ));*/
+        ));
 
         $users->play();
 

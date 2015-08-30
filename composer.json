@@ -24,7 +24,7 @@
             "Domain\\": "domain/",
             "Infrastructure\\": "infrastructure/",
             "BoundedContext\\": "workbench/bounded-context/src/",
-            "BoundedContext\\Laravel\\": "workbench/bounded-context-laravel/src/"
+            "BoundedContext\\Laravel\\": "workbench/bounded-context-laravel/src/Laravel/"
         }
     },
     "autoload-dev": {

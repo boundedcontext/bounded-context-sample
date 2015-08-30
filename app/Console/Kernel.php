@@ -13,9 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\Inspire::class,
-        \App\Console\Commands\Projections::class,
-        \App\Console\Commands\ProjectionStatus::class
+        \App\Console\Commands\Inspire::class
     ];
 
     /**
