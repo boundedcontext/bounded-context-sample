@@ -10,10 +10,6 @@ class Created extends AbstractUpgrader implements Upgrader
     {
         $schema->add('username');
         $schema->add('email');
-    }
-
-    protected function when_version_1(Schema $schema)
-    {
         $schema->add('password');
     }
 }

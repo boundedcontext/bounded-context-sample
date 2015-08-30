@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('create', 'TestController@create');
+Route::get('play', 'TestController@play');
+
+Route::get('user/create', 'UserController@create');

@@ -9,12 +9,7 @@ class UsernameChanged extends AbstractUpgrader implements Upgrader
 {
     protected function when_version_0(Schema $schema)
     {
-        $schema->add('username');
+        $schema->add('old_username');
         $schema->add('new_username');
-    }
-
-    protected function when_version_1(Schema $schema)
-    {
-        $schema->rename('username', 'old_username');
     }
 }

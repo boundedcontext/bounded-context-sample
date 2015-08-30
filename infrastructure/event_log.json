@@ -7,14 +7,15 @@
     "event" : {
       "id" : "b98540d7-c3f9-4af3-8d77-e46662fcb3f6",
       "username" : "lyonscf",
-      "email" : "colin@tercet.io"
+      "email" : "colin@tercet.io",
+      "password" : "drowssap"
     }
   },
   {
     "id" : "5007db80-3d4b-49fe-afd6-68e7fe5a482f",
     "type_id" : "cfd9ef79-2cf3-4ee6-805f-619f72352921",
     "occurred_at" : "2015-07-15T23:57:13+00:00",
-    "version" : "2",
+    "version" : "1",
     "event" : {
       "id" : "64cbea01-f61b-4135-b7e1-29b486acc7f1",
       "username" : "other",
@@ -26,7 +27,7 @@
     "id" : "1512abff-e79e-4eed-af88-69c4941bd9a6",
     "type_id" : "cfd9ef79-2cf3-4ee6-805f-619f72352921",
     "occurred_at" : "2015-07-15T23:57:13+00:00",
-    "version" : "2",
+    "version" : "1",
     "event" : {
       "id" : "bf307a89-9727-4bdb-96e2-daabee7f7f6a",
       "username" : "another",
@@ -38,7 +39,7 @@
     "id" : "1bef97c8-4415-49aa-b285-6048ce9dc467",
     "type_id" : "a55e6792-1136-4f79-b6dd-021238e9b615",
     "occurred_at" : "2015-07-15T23:57:13+00:00",
-    "version" : "2",
+    "version" : "1",
     "event" : {
       "id" : "b98540d7-c3f9-4af3-8d77-e46662fcb3f6",
       "old_username" : "lyonscf",
