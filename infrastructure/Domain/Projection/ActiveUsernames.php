@@ -8,10 +8,7 @@ use Domain\Test\ValueObject\Username;
 
 class ActiveUsernames extends AbstractProjection implements \Domain\Test\Projection\ActiveUsernames\Projection
 {
-    protected function table()
-    {
-        return 'projections_domain_test_active_usernames';
-    }
+    protected $table = 'projections_domain_test_active_usernames';
 
     public function exists(Username $username)
     {

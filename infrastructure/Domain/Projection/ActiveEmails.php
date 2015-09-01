@@ -8,10 +8,7 @@ use Domain\Test\ValueObject\EmailAddress;
 
 class ActiveEmails extends AbstractProjection implements \Domain\Test\Projection\ActiveEmails\Projection
 {
-    protected function table()
-    {
-        return 'projections_domain_test_active_emails';
-    }
+    protected $table = 'projections_domain_test_active_emails';
 
     public function exists(EmailAddress $email)
     {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use BoundedContext\Laravel\Illuminate\Projector\Repository;
 use Domain\Test\ValueObject\Username;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
@@ -35,17 +36,23 @@ class TestController extends Controller
         $log = $this->app->make('BoundedContext\Contracts\Log');
         $log->reset();
 
-        $aggregate_collections = $this->app->make('BoundedContext\Projector\AggregateCollections');
-        $aggregate_collections->projection()->reset();
+        $repository = new Repository($this->app);
 
-        $active_usernames = $this->app->make('Domain\Test\Projection\ActiveUsernames\Projector');
-        $active_usernames->projection()->reset();
+        $aggregate_collections = $repository->get('BoundedContext\Projection\AggregateCollections\Projector');
+        $aggregate_collections->reset();
+        $repository->save($aggregate_collections);
 
-        $active_emails = $this->app->make('Domain\Test\Projection\ActiveEmails\Projector');
-        $active_emails->projection()->reset();
+        $active_usernames = $repository->get('Domain\Test\Projection\ActiveUsernames\Projector');
+        $active_usernames->reset();
+        $repository->save($active_usernames);
 
-        $users = $this->app->make('App\Projections\Users\Projector');
-        $users->projection()->reset();
+        $active_emails = $repository->get('Domain\Test\Projection\ActiveEmails\Projector');
+        $active_emails->reset();
+        $repository->save($active_emails);
+
+        $users = $repository->get('App\Projections\Users\Projector');
+        $users->reset();
+        $repository->save($users);
 
         $this->bus->dispatch(new Command\Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
@@ -76,6 +83,11 @@ class TestController extends Controller
         ));
 
         $users->play();
+        $repository->save($users);
+
+        $greeting_workflow = $this->app->make('App\Workflows\Greeting');
+        $greeting_workflow->reset();
+        $greeting_workflow->play();
 
         dd($this->app->make('BoundedContext\Contracts\Log'));
     }

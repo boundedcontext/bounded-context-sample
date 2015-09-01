@@ -11,10 +11,7 @@ use Domain\Test\ValueObject\Username;
 
 class Users extends AbstractProjection implements \App\Projections\Users\Projection
 {
-    protected function table()
-    {
-        return 'projections_app_users';
-    }
+    protected $table = 'projections_app_users';
 
     public function exists(Uuid $id)
     {

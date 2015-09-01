@@ -2,17 +2,11 @@
 
 namespace Domain\Test\Projection\ActiveUsernames;
 
-use BoundedContext\Contracts\Log;
 use BoundedContext\Log\Item;
 use BoundedContext\Projector\AbstractProjector;
 
 class Projector extends AbstractProjector
 {
-    public function __construct(Log $log, Projection $projection)
-    {
-        parent::__construct($log, $projection);
-    }
-
     protected function when_test_user_created(Projection $projection, Item $item)
     {
         $event = $item->event();

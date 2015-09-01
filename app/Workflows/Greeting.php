@@ -1,5 +1,6 @@
 <?php namespace App\Workflows;
 
+use BoundedContext\Contracts\Item;
 use BoundedContext\Contracts\Workflow;
 use BoundedContext\Laravel\Illuminate\Workflow\AbstractWorkflow;
 

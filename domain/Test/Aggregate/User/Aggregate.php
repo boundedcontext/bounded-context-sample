@@ -10,11 +10,6 @@ use Domain\Test\ValueObject\Username;
 
 class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\Aggregate
 {
-    protected function generate()
-    {
-        return new State();
-    }
-
     public function create(Username $username, EmailAddress $email, Password $password)
     {
         (new Invariant\IsNotCreated($this->state))->assert();

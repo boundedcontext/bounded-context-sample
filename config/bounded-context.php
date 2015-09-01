@@ -30,7 +30,7 @@ return [
     'projections' => [
 
         'core' => [
-            \BoundedContext\Contracts\Projection\AggregateCollections::class =>
+            \BoundedContext\Projection\AggregateCollections\Projection::class =>
                 \BoundedContext\Laravel\Illuminate\Projection\AggregateCollections::class,
         ],
 

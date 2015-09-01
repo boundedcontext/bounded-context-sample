@@ -5,6 +5,7 @@ namespace Domain\Test\Aggregate\User;
 use BoundedContext\Collection\Collection;
 use BoundedContext\Command\Handler\AbstractHandler;
 
+use BoundedContext\Contracts\Repository;
 use Domain\Test\Projection\ActiveUsernames;
 use Domain\Test\Projection\ActiveEmails;
 
@@ -40,7 +41,7 @@ class Handler extends AbstractHandler
             $command->email
         ))->assert();
 
-        $aggregate = new Aggregate($command->id(), new Collection());
+        $aggregate = new Aggregate($command->id(), new State(), new Collection());
 
         $aggregate->create(
             $command->username,
