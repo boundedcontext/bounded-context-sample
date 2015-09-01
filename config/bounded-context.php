@@ -67,6 +67,7 @@ return [
     'workflows' => [
 
         'app' => [
+            \App\Workflows\Greeting::class
             /*
             \App\Workflow\User::class,
             \App\Workflow\Another::class,

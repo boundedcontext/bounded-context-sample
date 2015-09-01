@@ -2,7 +2,7 @@
 
 use BoundedContext\Contracts\Item;
 use BoundedContext\Contracts\Workflow;
-use BoundedContext\Laravel\Illuminate\Workflow\AbstractWorkflow;
+use BoundedContext\Workflow\AbstractWorkflow;
 
 class Greeting extends AbstractWorkflow implements Workflow
 {

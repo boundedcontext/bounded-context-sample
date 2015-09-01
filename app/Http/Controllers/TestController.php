@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use BoundedContext\Laravel\Illuminate\Projector;
+use BoundedContext\Laravel\Illuminate\Workflow;
 use Domain\Test\ValueObject\Username;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
@@ -32,7 +33,11 @@ class TestController extends Controller
         $log->reset();
 
         // Reset all Projections
-        $player = new Projector\Player($this->app);
+        $projection_player = new Projector\Player($this->app);
+        $projection_player->reset();
+
+        // Reset all Workflows
+        $player = new Workflow\Player($this->app);
         $player->reset();
 
         $this->bus->dispatch(new Command\Create(
@@ -64,12 +69,12 @@ class TestController extends Controller
         ));
 
         // Play Application Projectors
-        $player = new Projector\Player($this->app, 'app');
-        $player->play();
+        $projection_player = new Projector\Player($this->app, 'app');
+        $projection_player->play();
 
-        $greeting_workflow = $this->app->make('App\Workflows\Greeting');
-        $greeting_workflow->reset();
-        $greeting_workflow->play();
+        // Play Application Workflows
+        $player = new Workflow\Player($this->app, 'app');
+        $player->play();
 
         dd($this->app->make('BoundedContext\Contracts\Log'));
     }
