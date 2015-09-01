@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use BoundedContext\Laravel\Illuminate\Projector\Repository;
+use BoundedContext\Laravel\Illuminate\Projector;
 use Domain\Test\ValueObject\Username;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
@@ -25,34 +25,15 @@ class TestController extends Controller
         $this->app = $app;
     }
 
-    public function play()
-    {
-        $users = $this->app->make('App\Projections\Users\Projector');
-        $users->play();
-    }
-
     public function create(Request $request)
     {
+        // Reset Log/Stream
         $log = $this->app->make('BoundedContext\Contracts\Log');
         $log->reset();
 
-        $repository = new Repository($this->app);
-
-        $aggregate_collections = $repository->get('BoundedContext\Projection\AggregateCollections\Projector');
-        $aggregate_collections->reset();
-        $repository->save($aggregate_collections);
-
-        $active_usernames = $repository->get('Domain\Test\Projection\ActiveUsernames\Projector');
-        $active_usernames->reset();
-        $repository->save($active_usernames);
-
-        $active_emails = $repository->get('Domain\Test\Projection\ActiveEmails\Projector');
-        $active_emails->reset();
-        $repository->save($active_emails);
-
-        $users = $repository->get('App\Projections\Users\Projector');
-        $users->reset();
-        $repository->save($users);
+        // Reset all Projections
+        $player = new Projector\Player($this->app);
+        $player->reset();
 
         $this->bus->dispatch(new Command\Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
@@ -82,8 +63,9 @@ class TestController extends Controller
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
         ));
 
-        $users->play();
-        $repository->save($users);
+        // Play Application Projectors
+        $player = new Projector\Player($this->app, 'app');
+        $player->play();
 
         $greeting_workflow = $this->app->make('App\Workflows\Greeting');
         $greeting_workflow->reset();
