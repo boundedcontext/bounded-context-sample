@@ -8,7 +8,6 @@ use BoundedContext\Command\Handler\AbstractHandler;
 use BoundedContext\Contracts\Repository;
 use Domain\Test\Projection\ActiveUsernames;
 use Domain\Test\Projection\ActiveEmails;
-
 use Domain\Test\Invariant;
 use Domain\Test\Aggregate\User\Command;
 
