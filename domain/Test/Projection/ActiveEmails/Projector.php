@@ -9,14 +9,14 @@ class Projector extends AbstractProjector
 {
     protected function when_test_user_created(Projection $projection, Item $item)
     {
-        $event = $item->event();
+        $event = $item->payload();
 
         $projection->add($event->id(), $event->email);
     }
 
     protected function when_test_user_deleted(Projection $projection, Item $item)
     {
-        $event = $item->event();
+        $event = $item->payload();
 
         $projection->remove($event->id());
     }

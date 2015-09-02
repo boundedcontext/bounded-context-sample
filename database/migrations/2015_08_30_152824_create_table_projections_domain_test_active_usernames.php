@@ -18,7 +18,7 @@ class CreateTableProjectionsDomainTestActiveUsernames extends Migration
         });
 
         DB::table('projectors')->insert([
-            'name' => 'Infrastructure\Domain\Projection\ActiveUsernames'
+            'name' => 'Domain\Test\Projection\ActiveUsernames\Projector'
         ]);
     }
 
@@ -30,7 +30,7 @@ class CreateTableProjectionsDomainTestActiveUsernames extends Migration
     public function down()
     {
         DB::table('projectors')
-            ->where('name', 'Infrastructure\Domain\Projection\ActiveUsernames')
+            ->where('name', 'Domain\Test\Projection\ActiveUsernames\Projector')
             ->delete();
 
         Schema::drop('projections_domain_test_active_usernames');

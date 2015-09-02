@@ -18,7 +18,7 @@ class CreateTableProjectionsDomainTestActiveEmails extends Migration
         });
 
         DB::table('projectors')->insert([
-            'name' => 'Infrastructure\Domain\Projection\ActiveEmails'
+            'name' => 'Domain\Test\Projection\ActiveEmails\Projector'
         ]);
     }
 
@@ -30,7 +30,7 @@ class CreateTableProjectionsDomainTestActiveEmails extends Migration
     public function down()
     {
         DB::table('projectors')
-            ->where('name', 'Infrastructure\Domain\Projection\ActiveEmails')
+            ->where('name', 'Domain\Test\Projection\ActiveEmails\Projector')
             ->delete();
 
         Schema::drop('projections_domain_test_active_emails');

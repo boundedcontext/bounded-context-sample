@@ -1,4 +1,4 @@
-<?php namespace Domain\Test\Aggregate\User\Upgrader;
+<?php namespace Domain\Test\Aggregate\User\Event\Upgrader;
 
 use BoundedContext\Contracts\Upgrader;
 use BoundedContext\Contracts\Schema;

@@ -8,7 +8,7 @@ class Greeting extends AbstractWorkflow implements Workflow
 {
     protected function when_test_user_created(Item $item)
     {
-        $event = $item->event();
+        $event = $item->payload();
         var_dump("Hello there ".$event->username->serialize()."!");
     }
 }

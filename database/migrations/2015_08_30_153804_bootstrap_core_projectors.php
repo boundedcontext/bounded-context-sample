@@ -13,7 +13,7 @@ class BootstrapCoreProjectors extends Migration
     public function up()
     {
         DB::table('projectors')->insert([
-            'name' => 'BoundedContext\Laravel\Illuminate\Projection\AggregateCollections'
+            'name' => 'BoundedContext\Projection\AggregateCollections\Projector'
         ]);
     }
 
@@ -25,7 +25,7 @@ class BootstrapCoreProjectors extends Migration
     public function down()
     {
         DB::table('projectors')
-            ->where('name', 'BoundedContext\Laravel\Illuminate\Projection\AggregateCollections')
+            ->where('name', 'BoundedContext\Projection\AggregateCollections\Projector')
             ->delete();
     }
 }

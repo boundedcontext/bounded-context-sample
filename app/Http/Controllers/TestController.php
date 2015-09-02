@@ -28,8 +28,12 @@ class TestController extends Controller
 
     public function create(Request $request)
     {
-        // Reset Log/Stream
-        $log = $this->app->make('BoundedContext\Contracts\Log');
+        // Reset Event Log/Stream
+        $log = $this->app->make('EventLog');
+        $log->reset();
+
+        // Reset Command Log/Stream
+        $log = $this->app->make('CommandLog');
         $log->reset();
 
         // Reset all Projections
@@ -72,10 +76,14 @@ class TestController extends Controller
         $projection_player = new Projector\Player($this->app, 'app');
         $projection_player->play();
 
+        // Play Domain Workflows
+        $projection_player = new Workflow\Player($this->app, 'domain');
+        $projection_player->play();
+
         // Play Application Workflows
         $player = new Workflow\Player($this->app, 'app');
         $player->play();
 
-        dd($this->app->make('BoundedContext\Contracts\Log'));
+        dd($this->app->make('EventLog'));
     }
 }

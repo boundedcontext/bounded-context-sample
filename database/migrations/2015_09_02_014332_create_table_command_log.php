@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableEventStream extends Migration
+class CreateTableCommandLog extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateTableEventStream extends Migration
      */
     public function up()
     {
-        Schema::create('event_stream', function (Blueprint $table) {
-            $table->integer('log_id')->unique();
-            $table->string('log_item_id', 36)->unique();
+        Schema::create('command_log', function (Blueprint $table) {
+            $table->increments('id');
+            $table->mediumText('item');
         });
     }
 
@@ -25,6 +25,6 @@ class CreateTableEventStream extends Migration
      */
     public function down()
     {
-        Schema::drop('event_stream');
+        Schema::drop('command_log');
     }
 }

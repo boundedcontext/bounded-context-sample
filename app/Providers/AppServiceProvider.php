@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use BoundedContext\Laravel\Illuminate\Log;
+use BoundedContext\Laravel\Item\Upgrader;
+use BoundedContext\Map\Map;
 use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Support\Facades\DB;
@@ -29,12 +31,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('BoundedContext\Contracts\Log', function($app)
+        $this->app->singleton('EventLog', function($app)
         {
             return new Log(
-                $this->app->make('BoundedContext\Laravel\Item\Upgrader'),
+                new Upgrader(new Map(Config::get('bounded-context.events'))),
                 $this->app->make('db'),
-                'event_log'
+                'event_log',
+                'event_stream'
+            );
+        });
+
+        $this->app->singleton('CommandLog', function($app)
+        {
+            return new Log(
+                new Upgrader(new Map(Config::get('bounded-context.commands'))),
+                $this->app->make('db'),
+                'command_log',
+                'command_stream'
             );
         });
     }

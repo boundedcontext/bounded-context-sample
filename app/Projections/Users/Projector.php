@@ -7,7 +7,7 @@ class Projector extends AbstractProjector
 {
     protected function when_test_user_created(Projection $projection, Item $item)
     {
-        $event = $item->event();
+        $event = $item->payload();
 
         $projection->create(
             $event->id(),
@@ -20,7 +20,7 @@ class Projector extends AbstractProjector
 
     protected function when_test_user_username_changed(Projection $projection, Item $item)
     {
-        $event = $item->event();
+        $event = $item->payload();
 
         $projection->change_username(
             $event->id(),
@@ -31,7 +31,7 @@ class Projector extends AbstractProjector
 
     protected function when_test_user_deleted(Projection $projection, Item $item)
     {
-        $event = $item->event();
+        $event = $item->payload();
 
         $projection->delete(
             $event->id(),

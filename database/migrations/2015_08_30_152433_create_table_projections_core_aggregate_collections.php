@@ -13,7 +13,7 @@ class CreateTableProjectionsCoreAggregateCollections extends Migration
     public function up()
     {
         Schema::create('projections_core_aggregate_collections', function (Blueprint $table) {
-            $table->integer('event_log_id')->unique();
+            $table->integer('log_id')->unique();
             $table->string('aggregate_id', 36);
         });
     }

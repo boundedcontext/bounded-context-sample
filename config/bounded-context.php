@@ -4,8 +4,8 @@ return [
 
     'database' => [
         'tables' => [
-            'log'           => 'event_log',
-            'stream'        => 'event_stream',
+            'event_log'           => 'event_log',
+            'event_stream'        => 'event_stream',
             'projectors'    => 'projectors',
             'workflows'     => 'workflows',
         ]
@@ -84,6 +84,35 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Commands
+    |--------------------------------------------------------------------------
+    |
+    | Here are each of the database connections setup for your application.
+    | Of course, examples of configuring each database platform that is
+    | supported by Laravel is shown below to make development simple.
+    |
+    |
+    | All database work in Laravel is done through the PHP PDO facilities
+    | so make sure you have the driver for your particular database of
+    | choice installed on your machine before you begin development.
+    |
+    */
+
+    'commands' => [
+
+        '5225203f-3ff0-44aa-9142-4da277e6c009' =>
+            \Domain\Test\Aggregate\User\Command\Create::class,
+
+        '6cdac48b-a73f-458b-9224-766810458c0b' =>
+            \Domain\Test\Aggregate\User\Command\ChangeUsername::class,
+
+        '3f48bd5d-e02b-456a-9989-8f839386411b' =>
+            \Domain\Test\Aggregate\User\Command\Delete::class,
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Events
     |--------------------------------------------------------------------------
     |
@@ -109,5 +138,5 @@ return [
         'fb1685e5-c751-4dd2-a318-40e75f234e4d' =>
             \Domain\Test\Aggregate\User\Event\Deleted::class,
 
-    ]
+    ],
 ];

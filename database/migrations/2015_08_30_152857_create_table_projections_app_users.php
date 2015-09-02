@@ -23,7 +23,7 @@ class CreateTableProjectionsAppUsers extends Migration
         });
 
         DB::table('projectors')->insert([
-            'name' => 'Infrastructure\App\Projection\Users'
+            'name' => 'App\Projections\Users\Projector'
         ]);
     }
 
@@ -35,7 +35,7 @@ class CreateTableProjectionsAppUsers extends Migration
     public function down()
     {
         DB::table('projectors')
-            ->where('name', 'Infrastructure\App\Projection\Users')
+            ->where('name', 'App\Projections\Users\Projector')
             ->delete();
 
         Schema::drop('projections_app_users');
