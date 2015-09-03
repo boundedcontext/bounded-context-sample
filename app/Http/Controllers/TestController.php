@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use BoundedContext\Contracts\Dispatcher;
 use BoundedContext\Laravel\Illuminate\Projector;
 use BoundedContext\Laravel\Illuminate\Workflow;
 use Domain\Test\ValueObject\Username;
@@ -10,7 +11,6 @@ use Domain\Test\ValueObject\Password;
 use Domain\Test\Aggregate\User\Command;
 
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Http\Request;
 
 use BoundedContext\ValueObject\Uuid;

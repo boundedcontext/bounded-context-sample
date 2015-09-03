@@ -1,12 +1,12 @@
 <?php namespace App\Http\Controllers;
 
+use BoundedContext\Contracts\Dispatcher;
 use Domain\Test\ValueObject\Username;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
 use Domain\Test\Aggregate\User\Command;
 
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Http\Request;
 
 use BoundedContext\ValueObject\Uuid;
