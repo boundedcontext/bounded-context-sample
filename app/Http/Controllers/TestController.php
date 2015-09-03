@@ -68,13 +68,11 @@ class TestController extends Controller
             new Username('lyonscf3')
         ));
 
+        /*
         $this->bus->dispatch(new Command\Delete(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
         ));
-
-        // Play Application Projectors
-        $projection_player = new Projector\Player($this->app, 'app');
-        $projection_player->play();
+        */
 
         // Play Domain Workflows
         $projection_player = new Workflow\Player($this->app, 'domain');
@@ -83,6 +81,10 @@ class TestController extends Controller
         // Play Application Workflows
         $player = new Workflow\Player($this->app, 'app');
         $player->play();
+
+        // Play Application Projectors
+        $projection_player = new Projector\Player($this->app, 'app');
+        $projection_player->play();
 
         dd($this->app->make('EventLog'));
     }
