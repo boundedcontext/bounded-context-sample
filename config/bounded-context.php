@@ -4,8 +4,8 @@ return [
 
     'database' => [
         'tables' => [
-            'event_log'           => 'event_log',
-            'event_stream'        => 'event_stream',
+            'event_log'     => 'event_log',
+            'event_stream'  => 'event_stream',
             'projectors'    => 'projectors',
             'workflows'     => 'workflows',
         ]
