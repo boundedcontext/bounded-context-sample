@@ -9,7 +9,7 @@ use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
 use Domain\Test\ValueObject\Username;
 
-class Aggregate extends AbstractAggregate implements Contracts\Aggregate
+class Aggregate extends AbstractAggregate implements Contracts\Sourced\Aggregate
 {
     public function create(Username $username, EmailAddress $email, Password $password)
     {
