@@ -3,7 +3,7 @@
 namespace Domain\Test\Aggregate\User\Command;
 
 use BoundedContext\Command\AbstractCommand;
-use BoundedContext\Contracts\Command;
+use BoundedContext\Contracts\Command\Command;
 use BoundedContext\ValueObject\Uuid;
 use Domain\Test\ValueObject\Username;
 

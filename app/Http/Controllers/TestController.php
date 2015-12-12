@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use BoundedContext\Contracts\Dispatcher;
+use BoundedContext\Contracts\Bus\Dispatcher;
 use BoundedContext\Laravel\Illuminate\Projector;
 use BoundedContext\Laravel\Illuminate\Workflow;
 use Domain\Test\ValueObject\Username;

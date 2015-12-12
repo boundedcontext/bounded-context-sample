@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use BoundedContext\Contracts\Dispatcher;
+use BoundedContext\Contracts\Bus\Dispatcher;
 use Domain\Test\ValueObject\Username;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
