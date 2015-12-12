@@ -22,11 +22,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Repository.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Repository.php">
+      <file leaf-file-name="State.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/State.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5924528">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state vertical-scroll-proportion="-8.333333">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stream.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Stream.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.25157234">
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -40,8 +50,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/domain/Test/Aggregate/User/Aggregate.php" />
-        <option value="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Laravel/Illuminate/Workflow/Player.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Command/Log.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_08_30_133507_create_table_event_log.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_09_02_014332_create_table_command_log.php" />
@@ -91,6 +99,8 @@
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Item.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Log.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Repository.php" />
+        <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/State.php" />
+        <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Stream.php" />
       </list>
     </option>
   </component>
@@ -399,20 +409,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/domain/Test/Aggregate/User/Command/Upgrader/ChangeUsername.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34591195">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Test/Aggregate/User/Command/ChangeUsername.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/Test/Aggregate/User/Command/Upgrader/Delete.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34591195">
@@ -759,6 +755,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5924528">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/State.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.333333">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Stream.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding />
         </state>
       </provider>

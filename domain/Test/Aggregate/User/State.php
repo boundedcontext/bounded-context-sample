@@ -5,7 +5,7 @@ namespace Domain\Test\Aggregate\User;
 use BoundedContext\Contracts;
 use BoundedContext\State\AbstractState;
 
-class State extends AbstractState implements Contracts\State
+class State extends AbstractState implements Contracts\Sourced\State
 {
     public $is_created = 0;
     public $is_deleted = 0;
