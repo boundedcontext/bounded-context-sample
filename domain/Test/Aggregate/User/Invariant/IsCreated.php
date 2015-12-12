@@ -2,7 +2,7 @@
 
 namespace Domain\Test\Aggregate\User\Invariant;
 
-use BoundedContext\Contracts\Invariant;
+use BoundedContext\Contracts\Business\Invariant;
 use Domain\Test\Aggregate\User;
 
 class IsCreated implements Invariant

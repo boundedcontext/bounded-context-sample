@@ -2,7 +2,7 @@
 
 namespace Domain\Test\Invariant;
 
-use BoundedContext\Contracts\Invariant;
+use BoundedContext\Contracts\Business\Invariant;
 use Domain\Test\Projection\ActiveUsernames;
 use Domain\Test\ValueObject\Username;
 

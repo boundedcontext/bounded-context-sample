@@ -1,6 +1,6 @@
 <?php namespace App\Workflows;
 
-use BoundedContext\Contracts\Workflow;
+use BoundedContext\Contracts\Workflow\Workflow;
 use BoundedContext\Workflow\AbstractWorkflow;
 use Domain\Test\Aggregate\User;
 use Domain\Test\ValueObject\Username;

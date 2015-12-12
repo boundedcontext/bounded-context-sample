@@ -2,7 +2,7 @@
 
 namespace Domain\Test\Aggregate\User\Event;
 
-use BoundedContext\Contracts\Event;
+use BoundedContext\Contracts\Event\Event;
 use BoundedContext\ValueObject\Uuid;
 use BoundedContext\Event\AbstractEvent;
 

@@ -5,7 +5,7 @@ namespace Domain\Test\Projection\ActiveUsernames;
 use BoundedContext\ValueObject\Uuid;
 use Domain\Test\ValueObject\Username;
 
-interface Projection extends \BoundedContext\Contracts\Projection
+interface Projection extends \BoundedContext\Contracts\Projection\Projection
 {
     public function exists(Username $username);
 

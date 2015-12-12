@@ -6,7 +6,7 @@ use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\EncryptedPassword;
 use Domain\Test\ValueObject\Username;
 
-interface Projection extends \BoundedContext\Contracts\Projection
+interface Projection extends \BoundedContext\Contracts\Projection\Projection
 {
     public function exists(Uuid $id);
 

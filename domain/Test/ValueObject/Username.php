@@ -1,6 +1,6 @@
 <?php namespace Domain\Test\ValueObject;
 
-class Username implements \BoundedContext\Contracts\ValueObject
+class Username implements \BoundedContext\Contracts\ValueObject\ValueObject
 {
     private $username;
 

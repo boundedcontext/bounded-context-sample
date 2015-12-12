@@ -1,7 +1,7 @@
 <?php namespace Domain\Test\Aggregate\User\Event\Upgrader;
 
-use BoundedContext\Contracts\Upgrader;
-use BoundedContext\Contracts\Schema;
+use BoundedContext\Contracts\Schema\Upgrader;
+use BoundedContext\Contracts\Schema\Schema;
 
 use BoundedContext\Upgrader\AbstractUpgrader;
 

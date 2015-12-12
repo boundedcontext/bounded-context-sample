@@ -1,6 +1,6 @@
 <?php namespace Domain\Test\ValueObject;
 
-class EncryptedPassword implements \BoundedContext\Contracts\ValueObject
+class EncryptedPassword implements \BoundedContext\Contracts\ValueObject\ValueObject
 {
     private $password;
 
