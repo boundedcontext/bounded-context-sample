@@ -13,7 +13,7 @@ use Domain\Test\Aggregate\User\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 
-use BoundedContext\ValueObject\Uuid;
+use BoundedContext\Laravel\ValueObject\Uuid;
 
 class TestController extends Controller
 {

@@ -3,7 +3,7 @@
 namespace Infrastructure\Domain\Projection;
 
 use BoundedContext\Laravel\Illuminate\Projection\AbstractProjection;
-use BoundedContext\ValueObject\Uuid;
+use BoundedContext\Laravel\ValueObject\Uuid;
 use Domain\Test\ValueObject\Username;
 
 class ActiveUsernames extends AbstractProjection implements \Domain\Test\Projection\ActiveUsernames\Projection

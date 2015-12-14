@@ -2,7 +2,7 @@
 
 namespace Domain\Test\Projection\ActiveUsernames;
 
-use BoundedContext\ValueObject\Uuid;
+use BoundedContext\Laravel\ValueObject\Uuid;
 use Domain\Test\ValueObject\Username;
 
 interface Projection extends \BoundedContext\Contracts\Projection\Projection

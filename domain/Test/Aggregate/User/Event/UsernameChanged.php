@@ -3,7 +3,7 @@
 namespace Domain\Test\Aggregate\User\Event;
 
 use BoundedContext\Contracts\Event\Event;
-use BoundedContext\ValueObject\Uuid;
+use BoundedContext\Laravel\ValueObject\Uuid;
 use BoundedContext\Event\AbstractEvent;
 use Domain\Test\ValueObject\Username;
 

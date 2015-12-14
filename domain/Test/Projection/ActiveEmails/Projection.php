@@ -2,7 +2,7 @@
 
 namespace Domain\Test\Projection\ActiveEmails;
 
-use BoundedContext\ValueObject\Uuid;
+use BoundedContext\Laravel\ValueObject\Uuid;
 use Domain\Test\ValueObject\EmailAddress;
 
 interface Projection extends \BoundedContext\Contracts\Projection\Projection

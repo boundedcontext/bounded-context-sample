@@ -4,7 +4,7 @@ namespace Domain\Test\Aggregate\User\Command;
 
 use BoundedContext\Command\AbstractCommand;
 use BoundedContext\Contracts\Command\Command;
-use BoundedContext\ValueObject\Uuid;
+use BoundedContext\Laravel\ValueObject\Uuid;
 
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;

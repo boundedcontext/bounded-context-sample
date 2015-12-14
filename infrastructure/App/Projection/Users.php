@@ -4,7 +4,7 @@ namespace Infrastructure\App\Projection;
 
 use BoundedContext\Laravel\Illuminate\Projection\AbstractProjection;
 use BoundedContext\ValueObject\DateTime;
-use BoundedContext\ValueObject\Uuid;
+use BoundedContext\Laravel\ValueObject\Uuid;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\EncryptedPassword;
 use Domain\Test\ValueObject\Username;

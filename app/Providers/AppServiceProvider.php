@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use BoundedContext\Laravel\Generator\Uuid;
 use BoundedContext\Laravel\Illuminate\Log;
 use BoundedContext\Laravel\Item\Upgrader;
 use BoundedContext\Map\Map;
@@ -34,7 +35,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('EventLog', function($app)
         {
             return new Log(
-                new Upgrader(new Map(Config::get('bounded-context.events'))),
+                new Upgrader(
+                    new Map(
+                        Config::get('bounded-context.events'),
+                        $this->app->make('BoundedContext\Contracts\Generator\Uuid')
+                    ),
+                    $this->app->make('BoundedContext\Contracts\Generator\Uuid')
+                ),
                 $this->app->make('db'),
                 'event_log',
                 'event_stream'
@@ -44,7 +51,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('CommandLog', function($app)
         {
             return new Log(
-                new Upgrader(new Map(Config::get('bounded-context.commands'))),
+                new Upgrader(
+                    new Map(
+                        Config::get('bounded-context.commands'),
+                        $this->app->make('BoundedContext\Contracts\Generator\Uuid')
+                    ),
+                    $this->app->make('BoundedContext\Contracts\Generator\Uuid')
+                ),
                 $this->app->make('db'),
                 'command_log',
                 'command_stream'
