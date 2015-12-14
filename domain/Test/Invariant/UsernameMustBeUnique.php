@@ -3,6 +3,7 @@
 namespace Domain\Test\Invariant;
 
 use BoundedContext\Contracts\Business\Invariant;
+use BoundedContext\Contracts\Business\InvariantException;
 use Domain\Test\Projection\ActiveUsernames;
 use Domain\Test\ValueObject\Username;
 
@@ -26,7 +27,7 @@ class UsernameMustBeUnique implements Invariant
     {
         if($this->projection->exists($this->username))
         {
-            throw new \Exception("The username [".$this->username->serialize()."] already exists.");
+            throw new InvariantException("The username [".$this->username->serialize()."] already exists.");
         }
     }
 }

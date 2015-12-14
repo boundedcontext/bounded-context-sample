@@ -3,6 +3,7 @@
 namespace Domain\Test\Invariant;
 
 use BoundedContext\Contracts\Business\Invariant;
+use BoundedContext\Contracts\Business\InvariantException;
 use Domain\Test\Projection\ActiveEmails;
 use Domain\Test\ValueObject\EmailAddress;
 
@@ -26,7 +27,7 @@ class EmailMustBeUnique implements Invariant
     {
         if(!$this->is_satisfied())
         {
-            throw new \Exception("The email address [".$this->email->serialize()."] already exists.");
+            throw new InvariantException("The email address [".$this->email->serialize()."] already exists.");
         }
     }
 }
