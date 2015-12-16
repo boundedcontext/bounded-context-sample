@@ -1,6 +1,8 @@
 <?php namespace Domain\Test\ValueObject;
 
-class Password implements \BoundedContext\Contracts\ValueObject\ValueObject
+use BoundedContext\ValueObject\AbstractValueObject;
+
+class Password extends AbstractValueObject implements \BoundedContext\Contracts\ValueObject\ValueObject
 {
     private $password;
 

@@ -1,6 +1,8 @@
 <?php namespace Domain\Test\ValueObject;
 
-class Username implements \BoundedContext\Contracts\ValueObject\ValueObject
+use BoundedContext\ValueObject\AbstractValueObject;
+
+class Username extends AbstractValueObject implements \BoundedContext\Contracts\ValueObject\ValueObject
 {
     private $username;
 

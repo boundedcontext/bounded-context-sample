@@ -1,6 +1,8 @@
 <?php namespace Domain\Test\ValueObject;
 
-class EmailAddress implements \BoundedContext\Contracts\ValueObject\ValueObject
+use BoundedContext\ValueObject\AbstractValueObject;
+
+class EmailAddress extends AbstractValueObject implements \BoundedContext\Contracts\ValueObject\ValueObject
 {
     private $email;
 
