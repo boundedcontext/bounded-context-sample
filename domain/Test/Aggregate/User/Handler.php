@@ -1,6 +1,4 @@
-<?php
-
-namespace Domain\Test\Aggregate\User;
+<?php namespace Domain\Test\Aggregate\User;
 
 use BoundedContext\Collection\Collection;
 use BoundedContext\Command\Handler\AbstractHandler;
@@ -59,6 +57,7 @@ class Handler extends AbstractHandler
         ))->assert();
 
         $aggregate = $this->repository->get($command->id());
+
         $aggregate->change_username($command->username);
 
         $this->repository->save($aggregate);
@@ -67,6 +66,7 @@ class Handler extends AbstractHandler
     protected function handle_delete(Command\Delete $command)
     {
         $aggregate = $this->repository->get($command->id());
+
         $aggregate->delete();
 
         $this->repository->save($aggregate);
