@@ -4,24 +4,18 @@ namespace Domain\Test\Aggregate\User\Command;
 
 use BoundedContext\Command\AbstractCommand;
 use BoundedContext\Contracts\Command\Command;
-use BoundedContext\Laravel\ValueObject\Uuid;
+use BoundedContext\Contracts\ValueObject\Identifier;
 
-use Domain\Test\ValueObject\EmailAddress;
-use Domain\Test\ValueObject\Password;
-use Domain\Test\ValueObject\Username;
+use Domain\Test\Entity\User;
 
 class Create extends AbstractCommand implements Command
 {
-    public $username;
-    public $email;
-    public $password;
+    public $user;
 
-    public function __construct(Uuid $id, Username $username, EmailAddress $email, Password $password)
+    public function __construct(Identifier $id, User $user)
     {
         parent::__construct($id);
 
-        $this->username = $username;
-        $this->email = $email;
-        $this->password = $password;
+        $this->user = $user;
     }
 }

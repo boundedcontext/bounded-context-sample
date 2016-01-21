@@ -1,50 +1,45 @@
-<?php
+<?php namespace Domain\Test\Aggregate\User;
 
-namespace Domain\Test\Aggregate\User;
+use BoundedContext\Contracts\Sourced\Aggregate\Aggregate as AggregateContract;
+use BoundedContext\Sourced\Aggregate\AbstractAggregate;
 
-use BoundedContext\Contracts;
-use BoundedContext\Aggregate\AbstractAggregate;
-
-use Domain\Test\ValueObject\EmailAddress;
-use Domain\Test\ValueObject\Password;
+use Domain\Test\Aggregate\User\State\Invariant;
+use Domain\Test\Entity\User;
 use Domain\Test\ValueObject\Username;
 
-class Aggregate extends AbstractAggregate implements Contracts\Sourced\Aggregate
+class Aggregate extends AbstractAggregate implements AggregateContract
 {
-    public function create(Username $username, EmailAddress $email, Password $password)
+    public function create(User $user)
     {
-        (new Invariant\IsNotCreated($this->state))->assert();
+        $this->assert(Invariant\IsNotCreated::class);
 
-        $this->apply(new Event\Created(
-            $this->id(),
-            $username,
-            $email,
-            $password->encrypt()
-        ));
+        $this->apply(Event\Created::class,
+            [$user]
+        );
     }
 
     public function change_username(Username $username)
     {
-        (new Invariant\IsCreated($this->state))->assert();
+        $this->assert(Invariant\IsCreated::class);
+        $this->assert(Invariant\UsernameMustBeDifferent::class,
+            [$username]
+        );
 
-        (new Invariant\UsernameMustBeDifferent(
-            $this->state,
-            $username
-        ))->assert();
+        $this->apply(Event\UsernameChanged::class,
+            [$this->state->username, $username]
+        );
 
-        $this->apply(new Event\UsernameChanged(
-            $this->id(),
-            $this->state->username,
-            $username
-        ));
+       /* if($this->is_satisfied(Invariant\IsCartFull::class))
+        {
+            $this->apply(Event\CartIsFull::class);
+        };
+       */
     }
 
     public function delete()
     {
-        (new Invariant\IsNotDeleted($this->state))->assert();
+        $this->assert(Invariant\IsNotDeleted::class);
 
-        $this->apply(
-            new Event\Deleted($this->id())
-        );
+        $this->apply(Event\Deleted::class);
     }
 }

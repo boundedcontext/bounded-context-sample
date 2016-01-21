@@ -1,29 +1,29 @@
 <?php namespace App\Http\Controllers;
 
 use BoundedContext\Contracts\Bus\Dispatcher;
+use BoundedContext\Contracts\Generator\Identifier;
 use Domain\Test\ValueObject\Username;
 use Domain\Test\ValueObject\EmailAddress;
 use Domain\Test\ValueObject\Password;
 use Domain\Test\Aggregate\User\Command;
 
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
-
-use BoundedContext\ValueObject\Uuid;
 
 class UserController extends Controller
 {
     protected $bus;
+    protected $identifier_generator;
 
-    public function __construct(Dispatcher $bus)
+    public function __construct(Dispatcher $bus, Identifier $identifier_generator)
     {
         $this->bus = $bus;
+        $this->identifier_generator = $identifier_generator;
     }
 
     public function create(Request $request)
     {
         $this->bus->dispatch(new Command\Create(
-            Uuid::generate(),
+            $this->identifier_generator->generate(),
             new Username($request->get('username')),
             new EmailAddress($request->get('email')),
             new Password($request->get('password'))

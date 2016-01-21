@@ -1,16 +1,7 @@
-<?php
+<?php namespace App\Providers;
 
-namespace App\Providers;
-
-use BoundedContext\Laravel\Generator\Uuid;
-use BoundedContext\Laravel\Illuminate\Log;
-use BoundedContext\Laravel\Item\Upgrader;
-use BoundedContext\Map\Map;
-use Illuminate\Container\Container;
-use Illuminate\Database\Capsule\Manager;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Config;
+use BoundedContext\Laravel\Command\Log as CommandLog;
+use BoundedContext\Laravel\Event\Log as EventLog;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,35 +23,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('EventLog', function($app)
+        $this->app->singleton('BoundedContext\Contracts\Event\Log', function($app)
         {
-            return new Log(
-                new Upgrader(
-                    new Map(
-                        Config::get('bounded-context.events'),
-                        $this->app->make('BoundedContext\Contracts\Generator\Uuid')
-                    ),
-                    $this->app->make('BoundedContext\Contracts\Generator\Uuid')
-                ),
+            return new EventLog(
+                $this->app->make('BoundedContext\Contracts\Event\Snapshot\Factory'),
                 $this->app->make('db'),
-                'event_log',
-                'event_stream'
+                'event_snapshot_log',
+                'event_snapshot_stream'
             );
         });
 
-        $this->app->singleton('CommandLog', function($app)
+        $this->app->singleton('BoundedContext\Contracts\Command\Log', function($app)
         {
-            return new Log(
-                new Upgrader(
-                    new Map(
-                        Config::get('bounded-context.commands'),
-                        $this->app->make('BoundedContext\Contracts\Generator\Uuid')
-                    ),
-                    $this->app->make('BoundedContext\Contracts\Generator\Uuid')
-                ),
+            return new CommandLog(
+                $this->app->make('BoundedContext\Contracts\Event\Snapshot\Factory'),
                 $this->app->make('db'),
-                'command_log',
-                'command_stream'
+                'command_snapshot_log',
+                'command_snapshot_stream'
             );
         });
     }

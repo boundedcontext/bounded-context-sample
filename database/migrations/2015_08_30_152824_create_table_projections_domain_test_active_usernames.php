@@ -17,8 +17,8 @@ class CreateTableProjectionsDomainTestActiveUsernames extends Migration
             $table->string('username', 128)->unique();
         });
 
-        DB::table('projectors')->insert([
-            'name' => 'Domain\Test\Projection\ActiveUsernames\Projector'
+        DB::table('player_snapshots')->insert([
+            'name' => 'Domain\Test\Projection\Invariant\UsernameMustBeUnique\Projection\Projector'
         ]);
     }
 
@@ -29,8 +29,8 @@ class CreateTableProjectionsDomainTestActiveUsernames extends Migration
      */
     public function down()
     {
-        DB::table('projectors')
-            ->where('name', 'Domain\Test\Projection\ActiveUsernames\Projector')
+        DB::table('player_snapshots')
+            ->where('name', 'Domain\Test\Projection\Invariant\UsernameMustBeUnique\Projection\Projector')
             ->delete();
 
         Schema::drop('projections_domain_test_active_usernames');

@@ -1,74 +1,45 @@
 <?php namespace Domain\Test\Aggregate\User;
 
-use BoundedContext\Collection\Collection;
 use BoundedContext\Command\Handler\AbstractHandler;
 
-use BoundedContext\Contracts\Sourced\Repository;
-use Domain\Test\Projection\ActiveUsernames;
-use Domain\Test\Projection\ActiveEmails;
-use Domain\Test\Invariant;
+use Domain\Test\Invariant\UsernameMustBeUnique;
+use Domain\Test\Invariant\EmailAddressMustBeUnique;
 use Domain\Test\Aggregate\User\Command;
 
 class Handler extends AbstractHandler
 {
-    private $active_username_projection;
-    private $active_email_projection;
-
-    public function __construct(
-        Repository $repository,
-        ActiveUsernames\Projection $active_username_projection,
-        ActiveEmails\Projection $active_email_projection
+    protected function handle_create(
+        Aggregate $aggregate,
+        Command\Create $command
     )
     {
-        parent::__construct($repository);
-
-        $this->active_username_projection = $active_username_projection;
-        $this->active_email_projection = $active_email_projection;
-    }
-
-    protected function handle_create(Command\Create $command)
-    {
-        (new Invariant\UsernameMustBeUnique(
-            $this->active_username_projection,
-            $command->username
-        ))->assert();
-
-        (new Invariant\EmailMustBeUnique(
-            $this->active_email_projection,
-            $command->email
-        ))->assert();
-
-        $aggregate = new Aggregate($command->id(), new State(), new Collection());
-
-        $aggregate->create(
-            $command->username,
-            $command->email,
-            $command->password
+        $this->assert(UsernameMustBeUnique\Invariant::class,
+            [$command->user->username()]
+        );
+        $this->assert(EmailAddressMustBeUnique\Invariant::class,
+            [$command->user->email()]
         );
 
-        $this->repository->save($aggregate);
+        $aggregate->create($command->user);
     }
 
-    protected function handle_change_username(Command\ChangeUsername $command)
+    protected function handle_change_username(
+        Aggregate $aggregate,
+        Command\ChangeUsername $command
+    )
     {
-        (new Invariant\UsernameMustBeUnique(
-            $this->active_username_projection,
-            $command->username
-        ))->assert();
-
-        $aggregate = $this->repository->get($command->id());
+        $this->assert(UsernameMustBeUnique\Invariant::class,
+            [$command->username]
+        );
 
         $aggregate->change_username($command->username);
-
-        $this->repository->save($aggregate);
     }
 
-    protected function handle_delete(Command\Delete $command)
+    protected function handle_delete(
+        Aggregate $aggregate,
+        Command\Delete $command
+    )
     {
-        $aggregate = $this->repository->get($command->id());
-
         $aggregate->delete();
-
-        $this->repository->save($aggregate);
     }
 }

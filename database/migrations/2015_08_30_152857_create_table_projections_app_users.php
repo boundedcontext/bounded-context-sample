@@ -22,7 +22,7 @@ class CreateTableProjectionsAppUsers extends Migration
             $table->string('password', 128);
         });
 
-        DB::table('projectors')->insert([
+        DB::table('player_snapshots')->insert([
             'name' => 'App\Projections\Users\Projector'
         ]);
     }
@@ -34,7 +34,7 @@ class CreateTableProjectionsAppUsers extends Migration
      */
     public function down()
     {
-        DB::table('projectors')
+        DB::table('player_snapshots')
             ->where('name', 'App\Projections\Users\Projector')
             ->delete();
 
