@@ -1,7 +1,7 @@
-<?php namespace Domain\Test\Projection\Invariant\EmailAddressMustBeUnique\Projection;
+<?php namespace Domain\Test\Invariant\EmailAddressMustBeUnique\Projection;
 
-use Domain\Test\Aggregate\User\Event;
 use BoundedContext\Projection\AbstractProjector;
+use Domain\Test\Aggregate\User\Event;
 
 class Projector extends AbstractProjector
 {

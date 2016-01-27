@@ -13,9 +13,10 @@ class CreateTablePlayerSnapshots extends Migration
     public function up()
     {
         Schema::create('player_snapshots', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('id', 36)->unique();
+            $table->dateTimeTz('occurred_at');
             $table->integer('version')->default(0);
+            $table->string('name');
             $table->string('last_id', 36)->default('00000000-0000-0000-0000-000000000000');
         });
     }

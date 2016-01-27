@@ -16,10 +16,6 @@ class CreateTableProjectionsDomainTestActiveEmails extends Migration
             $table->string('user_id', 36)->unique();
             $table->string('email', 128)->unique();
         });
-
-        DB::table('player_snapshots')->insert([
-            'name' => 'Domain\Test\Projection\Invariant\EmailAddressMustBeUnique\Projection\Projector'
-        ]);
     }
 
     /**
@@ -29,10 +25,6 @@ class CreateTableProjectionsDomainTestActiveEmails extends Migration
      */
     public function down()
     {
-        DB::table('player_snapshots')
-            ->where('name', 'Domain\Test\Projection\Invariant\EmailAddressMustBeUnique\Projection\Projector')
-            ->delete();
-
         Schema::drop('projections_domain_test_active_emails');
     }
 }

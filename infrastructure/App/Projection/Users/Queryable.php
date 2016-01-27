@@ -1,9 +1,9 @@
-<?php namespace Infrastructure\App\Projection;
+<?php namespace Infrastructure\App\Projection\Users;
 
 use BoundedContext\Contracts\ValueObject\Identifier;
-use BoundedContext\Laravel\Illuminate\Projection\AbstractProjection;
+use BoundedContext\Laravel\Illuminate\Projection\AbstractQueryable;
 
-class Queryable extends AbstractProjection implements \App\Projections\Users\Queryable
+class Queryable extends AbstractQueryable implements \App\Projections\Users\Queryable
 {
     protected $table = 'projections_app_users';
 

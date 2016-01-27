@@ -35,21 +35,15 @@ class TestController extends Controller
         $log = $this->app->make('BoundedContext\Contracts\Command\Log');
         $log->reset();
 
-        // Reset all Players (Projections and Workflows)
-        // $this->players->all()->play();
-        // $this->players->id('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')->play();
-        // $this->players->domain()->projectors()->play();
-        // $this->players->application()->workflows()->play();
+        $player_builder = $this->app->make('BoundedContext\Laravel\Player\Collection\Builder');
 
-        /*
-            // Reset all Projections
-            $projection_player = new Projector\Player($this->app);
-            $projection_player->reset();
+        $player = $player_builder
+            ->all()
+            ->get();
 
-            // Reset all Workflows
-            $player = new Workflow\Player($this->app);
-            $player->reset();
-        */
+        $player->reset();
+
+        dd('roflol');
 
         $this->bus->dispatch(new Command\Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),

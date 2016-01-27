@@ -1,4 +1,4 @@
-<?php namespace Infrastructure\App\Projection;
+<?php namespace Infrastructure\App\Projection\Users;
 
 use BoundedContext\Contracts\ValueObject\DateTime;
 use BoundedContext\Contracts\ValueObject\Identifier;
@@ -10,6 +10,11 @@ use Domain\Test\ValueObject\Username;
 class Projection extends AbstractProjection implements \App\Projections\Users\Projection
 {
     protected $table = 'projections_app_users';
+
+    /**
+     * @var Queryable $queryable
+     */
+    protected $queryable;
 
     public function create(
         Identifier $id,

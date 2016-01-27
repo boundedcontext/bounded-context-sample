@@ -1,4 +1,4 @@
-<?php namespace Domain\Test\Projection\Invariant\EmailAddressMustBeUnique\Projection;
+<?php namespace Domain\Test\Invariant\EmailAddressMustBeUnique\Projection;
 
 use Domain\Test\ValueObject\EmailAddress;
 

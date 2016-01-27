@@ -1,28 +1,14 @@
-<?php namespace Infrastructure\Domain\Projection;
+<?php namespace Infrastructure\Domain\Projection\UsernameMustBeUnique;
 
+use BoundedContext\Contracts\ValueObject\Identifier;
 use BoundedContext\Laravel\Illuminate\Projection\AbstractProjection;
-use BoundedContext\Laravel\ValueObject\Uuid;
 use Domain\Test\ValueObject\Username;
 
-class Projection extends AbstractProjection implements \Domain\Test\Projection\Invariant\UsernameMustBeUnique\Projection\Projection
+class Projection extends AbstractProjection implements \Domain\Test\Invariant\UsernameMustBeUnique\Projection\Projection
 {
     protected $table = 'projections_domain_test_active_usernames';
 
-    public function get(Uuid $id)
-    {
-        $username_row = $this->query()
-            ->where('user_id', $id->serialize())
-            ->first();
-
-        if(!$username_row)
-        {
-            throw new \Exception("The id [".$id->serialize()."] does not have an active username.");
-        }
-
-        return $username_row->username;
-    }
-
-    public function add(Uuid $id, Username $username)
+    public function add(Identifier $id, Username $username)
     {
         if($this->exists($username))
         {
@@ -35,7 +21,7 @@ class Projection extends AbstractProjection implements \Domain\Test\Projection\I
         ]);
     }
 
-    public function remove(Uuid $id)
+    public function remove(Identifier $id)
     {
         $username = $this->get($id);
 
@@ -44,7 +30,7 @@ class Projection extends AbstractProjection implements \Domain\Test\Projection\I
             ->delete();
     }
 
-    public function replace(Uuid $id, Username $old_username, Username $new_username)
+    public function replace(Identifier $id, Username $old_username, Username $new_username)
     {
         $this->remove($id);
         $this->add($id, $new_username);

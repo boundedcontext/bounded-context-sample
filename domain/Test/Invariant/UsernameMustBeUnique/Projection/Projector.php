@@ -1,4 +1,4 @@
-<?php namespace Domain\Test\Projection\Invariant\UsernameMustBeUnique\Projection;
+<?php namespace Domain\Test\Invariant\UsernameMustBeUnique\Projection;
 
 use BoundedContext\Projection\AbstractProjector;
 use Domain\Test\Aggregate\User\Event;
