@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7b61b51-c844-42a8-b267-c6df1d1206e1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Flow.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Handler.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/IsCheckedOut/Invariant.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasLessThan10Products/Invariant.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/MemberMustOnlyHaveOneCart/Invariant.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasOnlyOneCart/Invariant.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut/Invariant.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created/Invariant.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Emptied/Invariant.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct/Invariant.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full/Invariant.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Flow.php" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasOnlyOneCart/Invariant.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart/Invariant.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php" />
     </list>
     <ignored path="bounded-context-laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,51 +37,9 @@
       <file leaf-file-name="Aggregate.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18238993">
-              <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.094339624">
+              <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="State.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.166667">
-              <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Flow.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Flow.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="15.833333">
-              <caret line="0" column="47" selection-start-line="0" selection-start-column="47" selection-end-line="0" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Invariant.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasLessThan10Products/Invariant.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6666665">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.5">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding>
-                <element signature="e#49#80#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -90,12 +52,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/projections.php" />
-        <option value="$PROJECT_DIR$/domain/Test/Invariant/EmailAddressMustBeUnique/Projection/Projection.php" />
-        <option value="$PROJECT_DIR$/domain/Test/Invariant/UsernameMustBeUnique/Projection/Projection.php" />
-        <option value="$PROJECT_DIR$/infrastructure/Domain/Projection/EmailAddressMustBeUnique/Projection.php" />
-        <option value="$PROJECT_DIR$/infrastructure/Domain/Projection/UsernameMustBeUnique/Projection.php" />
-        <option value="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Laravel/Providers/BoundedContextProvider.php" />
         <option value="$PROJECT_DIR$/config/players.php" />
         <option value="$PROJECT_DIR$/domain/Test/Invariant/UsernameMustBeUnique/Projection/Queryable.php" />
         <option value="$PROJECT_DIR$/infrastructure/Domain/Projection/EmailAddressMustBeUnique/Queryable.php" />
@@ -136,10 +92,16 @@
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/IsCheckedOut/Invariant.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CartHasAMaximumOf10Products/Invariant.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CartHasLessThan10Products/Invariant.php" />
-        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasOnlyOneCart/Invariant.php" />
-        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Flow.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasOnlyOneCart/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart/Invariant.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Empty/Invariant.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" />
       </list>
     </option>
@@ -976,104 +938,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shopping" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aggregate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="State" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shopping" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aggregate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Invariant" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HasOnlyOneCart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shopping" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aggregate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Invariant" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HasLessThan10Products" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1218,38 +1082,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/infrastructure/Domain/Projection/EmailAddressMustBeUnique/Queryable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5660377">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/Sourced/Aggregate/State/Snapshot/Factory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.333334">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Aggregate/State/State.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18867925">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/ValueObject/AbstractValueObject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1572327">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/ValueObject/Boolean.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6603774">
@@ -1551,7 +1383,7 @@
         <state vertical-scroll-proportion="0.3773585">
           <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="87" />
           <folding>
-            <element signature="e#57#100#0#PHP" expanded="true" />
+            <element signature="e#57#100#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1614,7 +1446,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasOnlyOneCart/Invariant.php">
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart/Invariant.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25157234">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
@@ -1622,26 +1454,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasLessThan10Products/Invariant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6666665">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Flow.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="15.833333">
-          <caret line="0" column="47" selection-start-line="0" selection-start-column="47" selection-end-line="0" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="2.0754716">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
             <element signature="e#49#80#0#PHP" expanded="true" />
           </folding>
@@ -1650,16 +1466,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.166667">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.08805031">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasLessThan10Products/Invariant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct/Invariant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6666665">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full/Invariant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut/Invariant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Emptied/Invariant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created/Invariant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18238993">
-          <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.094339624">
+          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
           <folding />
         </state>
       </provider>

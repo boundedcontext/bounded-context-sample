@@ -1,4 +1,4 @@
-<?php namespace Domain\Shopping\Aggregate\Cart\Invariant\HasOnlyOneCart;
+<?php namespace Domain\Shopping\Aggregate\Cart\Invariant\Full;
 
 use BoundedContext\Contracts\Business\Invariant\Invariant as InvariantContract;
 

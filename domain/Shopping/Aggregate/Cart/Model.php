@@ -2,12 +2,25 @@
 
 use BoundedContext\Index\Index;
 use BoundedContext\Contracts\ValueObject\Identifier;
+use BoundedContext\ValueObject\Boolean;
 use Domain\Shopping\Aggregate\Cart\Entity\Cart;
 use Domain\Shopping\Aggregate\Cart\Entity\Product;
 use Domain\Shopping\ValueObject\Quantity;
 
 class Model
 {
+    /**
+     * @name is_created
+     * @type \BoundedContext\ValueObject\Boolean
+     */
+    public $is_created;
+
+    /**
+     * @name is_checked_out
+     * @type \BoundedContext\ValueObject\Boolean
+     */
+    public $is_checked_out;
+
     /**
      * @name cart
      * @type \Domain\Shopping\Aggregate\Cart\Entity\Cart
@@ -22,6 +35,7 @@ class Model
 
     public function create(Cart $cart)
     {
+        $this->is_created = new Boolean(true);
         $this->cart = $cart;
         $this->products = new Index();
     }
@@ -43,5 +57,10 @@ class Model
     public function remove_product(Identifier $product_id)
     {
         $this->products->remove($product_id); // Throws Exists Exception.
+    }
+
+    public function checkout()
+    {
+        $this->is_checked_out = new Boolean(true);
     }
 }

@@ -1,6 +1,11 @@
 <?php namespace Domain\Shopping\Aggregate\Cart;
 
-use Domain\Shopping\Aggregate\Cart\Invariant\HasOnlyOneCart;
+use Domain\Shopping\Aggregate\Cart\Invariant\Created;
+use Domain\Shopping\Aggregate\Cart\Invariant\Full;
+use Domain\Shopping\Aggregate\Cart\Invariant\Emptied;
+use Domain\Shopping\Aggregate\Cart\Invariant\CheckedOut;
+use Domain\Shopping\Aggregate\Cart\Invariant\ExistingProduct;
+use Domain\Shopping\Aggregate\Cart\Invariant\OnlyActiveMemberCart;
 
 class Aggregate
 {
@@ -10,7 +15,7 @@ class Aggregate
     )
     {
         $this->assert->not(Created\Invariant::class);
-        $this->assert->is(HasOnlyOneCart\Invariant::class,
+        $this->assert->is(OnlyActiveMemberCart\Invariant::class,
             [$command->cart->member_id()]
         );
 
@@ -40,6 +45,9 @@ class Aggregate
     )
     {
         $this->assert->not(CheckedOut\Invariant::class);
+        $this->assert->is(ExistingProduct\Invariant::class,
+            [$event->product_id]
+        );
 
         $state->apply(new Event\ProductQuantityChanged(
             $command->id(),
@@ -55,7 +63,7 @@ class Aggregate
     {
         $this->assert->not(Emptied\Invariant::class);
         $this->assert->not(CheckedOut\Invariant::class);
-        $this->assert->not(ProductExists\Invariant::class,
+        $this->assert->is(ExistingProduct\Invariant::class,
             [$event->product_id]
         );
 
