@@ -30,8 +30,8 @@ class Aggregate
         Command\AddProductToCart $command
     )
     {
-        $this->assert->not(Full\Invariant::class);
         $this->assert->not(CheckedOut\Invariant::class);
+        $this->assert->not(Full\Invariant::class);
         $this->assert->not(ExistingProduct\Invariant::class,
             [$command->product_id]
         );
@@ -64,8 +64,8 @@ class Aggregate
         Command\RemoveProductFromCart $command
     )
     {
-        $this->assert->not(Emptied\Invariant::class);
         $this->assert->not(CheckedOut\Invariant::class);
+        $this->assert->not(Emptied\Invariant::class);
         $this->assert->is(ExistingProduct\Invariant::class,
             [$command->product_id]
         );

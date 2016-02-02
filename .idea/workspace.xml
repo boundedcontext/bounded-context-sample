@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7b61b51-c844-42a8-b267-c6df1d1206e1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" />
     </list>
     <ignored path="bounded-context-laravel.iws" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="Aggregate.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8176101">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+            <state vertical-scroll-proportion="2.8301888">
+              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
               <folding>
                 <element signature="e#49#102#0#PHP" expanded="true" />
               </folding>
@@ -1537,8 +1536,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8176101">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        <state vertical-scroll-proportion="2.8301888">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding>
             <element signature="e#49#102#0#PHP" expanded="true" />
           </folding>
