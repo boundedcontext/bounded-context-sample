@@ -20,7 +20,10 @@ class Handler extends AbstractHandler
             [$command->user->email()]
         );
 
-        $aggregate->create($command->user);
+        $aggregate->apply(new Event\Created(
+            $command->id(),
+            $command->user
+        ));
     }
 
     protected function handle_change_username(
@@ -32,7 +35,11 @@ class Handler extends AbstractHandler
             [$command->username]
         );
 
-        $aggregate->change_username($command->username);
+        $aggregate->apply(new Event\UsernameChanged(
+            $command->id(),
+            $command->username,
+            $command->username
+        ));
     }
 
     protected function handle_delete(
@@ -40,6 +47,8 @@ class Handler extends AbstractHandler
         Command\Delete $command
     )
     {
-        $aggregate->delete();
+        $aggregate->apply(new Event\Deleted(
+            $aggregate->id()
+        ));
     }
 }

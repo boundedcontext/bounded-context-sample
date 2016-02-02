@@ -4,42 +4,31 @@ use BoundedContext\Contracts\Sourced\Aggregate\Aggregate as AggregateContract;
 use BoundedContext\Sourced\Aggregate\AbstractAggregate;
 
 use Domain\Test\Aggregate\User\State\Invariant;
-use Domain\Test\Entity\User;
-use Domain\Test\ValueObject\Username;
+use Domain\Test\Aggregate\User\State\State;
 
 class Aggregate extends AbstractAggregate implements AggregateContract
 {
-    public function create(User $user)
+    protected function when_test_user_created(
+        State $state,
+        Event\Created $event
+    )
     {
-        $this->assert(Invariant\IsNotCreated::class);
-
-        $this->apply(Event\Created::class,
-            [$user]
-        );
+        $state->create($event->user);
     }
 
-    public function change_username(Username $username)
+    protected function when_test_user_username_changed(
+        State $state,
+        Event\UsernameChanged $event
+    )
     {
-        $this->assert(Invariant\IsCreated::class);
-        $this->assert(Invariant\UsernameMustBeDifferent::class,
-            [$username]
-        );
-
-        $this->apply(Event\UsernameChanged::class,
-            [$this->state->username, $username]
-        );
-
-       /* if($this->is_satisfied(Invariant\IsCartFull::class))
-        {
-            $this->apply(Event\CartIsFull::class);
-        };
-       */
+        $state->change_username($event->new_username);
     }
 
-    public function delete()
+    protected function when_test_user_deleted(
+        State $state,
+        Event\Deleted $event
+    )
     {
-        $this->assert(Invariant\IsNotDeleted::class);
-
-        $this->apply(Event\Deleted::class);
+        $state->delete();
     }
 }

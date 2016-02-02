@@ -1,27 +1,60 @@
 <?php namespace Domain\Test\Aggregate\User\State;
 
-use Domain\Test\Aggregate\User\Event;
+use BoundedContext\Sourced\Aggregate\State\AbstractState;
+use BoundedContext\ValueObject\Boolean;
+use Domain\Test\Entity\User;
+use Domain\Test\ValueObject\Username;
 
-class State
+class State extends AbstractState
 {
-    protected function when_created(Event\Created $event)
+    /**
+     * @name is_created
+     * @type \BoundedContext\ValueObject\Boolean
+     */
+
+    public $is_created;
+
+    /**
+     * @name is_deleted
+     * @type \BoundedContext\ValueObject\Boolean
+     */
+
+    public $is_deleted;
+
+    /**
+     * @name user
+     * @type \Domain\Test\Entity\User
+     */
+
+    public $user;
+
+    public function create(User $user)
     {
-        $projection->create(
-            $event->username,
-            $event->email,
-            $event->password
-        );
+        $this->assert(Invariant\IsNotCreated::class);
+
+        $this->is_created = new Boolean(true);
+        $this->user = $user;
     }
 
-    protected function when_username_changed(Event\UsernameChanged $event)
+    public function change_username(Username $username)
     {
-        $projection->change_username(
-            $event->username
+        $this->assert(Invariant\IsCreated::class);
+        $this->assert(Invariant\UsernameMustBeDifferent::class,
+            [$username]
         );
+
+        $this->user = $this->user->change_username($username);
     }
 
-    protected function when_deleted(Event\Deleted $event)
+    public function delete()
     {
-        $projection->delete();
+        $this->assert(Invariant\IsNotDeleted::class);
+
+        $this->is_deleted = new Boolean(true);
+    }
+
+    public function undelete()
+    {
+        $this->is_deleted = new Boolean(false);
     }
 }

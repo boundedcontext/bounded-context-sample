@@ -26,9 +26,14 @@ class User extends AbstractEntity implements \BoundedContext\Contracts\Entity\En
         $this->password = $password;
     }
 
-    public function username()
+    public function change_username(Username $username)
     {
-        return $this->username;
+        return new User(
+            $this->id,
+            $username,
+            $this->email,
+            $this->password
+        );
     }
 
     public function email()

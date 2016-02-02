@@ -43,8 +43,6 @@ class TestController extends Controller
 
         $player->reset();
 
-        dd('roflol');
-
         $this->bus->dispatch(new Command\Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
             new User(
@@ -54,6 +52,8 @@ class TestController extends Controller
                 (new Password('password'))->encrypt()
             )
         ));
+
+        dd('roflolol');
 
         $this->bus->dispatch(new Command\Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f7'),
