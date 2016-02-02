@@ -1,10 +1,10 @@
-<?php namespace Domain\Shopping\Aggregate\Cart\Event;
+<?php namespace Domain\Shopping\Aggregate\Cart\Command;
 
-use BoundedContext\Contracts\Event\Event;
+use BoundedContext\Command\AbstractCommand;
+use BoundedContext\Contracts\Command\Command;
 use BoundedContext\Contracts\ValueObject\Identifier;
-use BoundedContext\Event\AbstractEvent;
 
-class ProductRemovedFromCart extends AbstractEvent implements Event
+class RemoveProduct extends AbstractCommand implements Command
 {
     public $product_id;
 

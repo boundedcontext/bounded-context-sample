@@ -1,11 +1,11 @@
-<?php namespace Domain\Shopping\Aggregate\Cart\Command;
+<?php namespace Domain\Shopping\Aggregate\Cart\Event;
 
-use BoundedContext\Command\AbstractCommand;
-use BoundedContext\Contracts\Command\Command;
+use BoundedContext\Contracts\Event\Event;
 use BoundedContext\Contracts\ValueObject\Identifier;
+use BoundedContext\Event\AbstractEvent;
 use Domain\Shopping\Entity\Product;
 
-class AddProductToCart extends AbstractCommand implements Command
+class ProductAdded extends AbstractEvent implements Event
 {
     public $product;
 

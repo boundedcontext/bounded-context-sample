@@ -5,7 +5,7 @@ use BoundedContext\Contracts\Business\Invariant\Invariant;
 use BoundedContext\Contracts\ValueObject\Identifier;
 use Domain\Shopping\Aggregate\Cart\Projection\OnlyActiveMemberCart\Queryable;
 
-class OnlyOneActiveMemberCart implements Invariant
+class OnlyActiveMemberCart implements Invariant
 {
     private $queryable;
     private $member_id;

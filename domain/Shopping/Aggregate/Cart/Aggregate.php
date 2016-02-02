@@ -7,7 +7,6 @@ class Aggregate
     )
     {
         $this->assert->not(Invariant\Created::class);
-
         $this->assert->is(Invariant\OnlyActiveMemberCart::class,
             [$command->cart->member_id()]
         );
@@ -16,22 +15,33 @@ class Aggregate
             $command->id(),
             $command->cart
         ));
+
+        $this->apply(new Event\Emptied(
+            $command->id()
+        ));
     }
 
     protected function handle_add_product_to_cart(
-        Command\AddProductToCart $command
+        Command\AddProduct $command
     )
     {
         $this->assert->not(Invariant\CheckedOut::class);
         $this->assert->not(Invariant\Full::class);
         $this->assert->not(Invariant\ExistingProduct::class,
-            [$command->product_id]
+            [$command->product->id()]
         );
 
-        $this->apply(new Event\ProductAddedToCart(
+        $this->apply(new Event\ProductAdded(
             $command->id(),
             $command->product
         ));
+
+        if($this->check->is(Invariant\Full::class))
+        {
+            $this->apply(new Event\Full(
+                $command->id()
+            ));
+        }
     }
 
     protected function handle_change_product_quantity(
@@ -40,7 +50,7 @@ class Aggregate
     {
         $this->assert->not(Invariant\CheckedOut::class);
         $this->assert->is(Invariant\ExistingProduct::class,
-            [$command->product_id]
+            [$command->product->id()]
         );
 
         $this->apply(new Event\ProductQuantityChanged(
@@ -50,19 +60,25 @@ class Aggregate
     }
 
     protected function handle_remove_product_from_cart(
-        Command\RemoveProductFromCart $command
+        Command\RemoveProduct $command
     )
     {
         $this->assert->not(Invariant\CheckedOut::class);
-        $this->assert->not(Invariant\Emptied::class);
         $this->assert->is(Invariant\ExistingProduct::class,
             [$command->product_id]
         );
 
-        $this->apply(new Event\ProductRemovedFromCart(
+        $this->apply(new Event\ProductRemoved(
             $command->id(),
             $command->product_id
         ));
+
+        if($this->check->is(Invariant\Emptied::class))
+        {
+            $this->apply(new Event\Emptied(
+                $command->id()
+            ));
+        }
     }
 
     protected function handle_checkout(

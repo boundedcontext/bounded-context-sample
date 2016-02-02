@@ -12,7 +12,7 @@ class State
 
     protected function when_shopping_cart_product_added_to_cart(
         Projection $projection,
-        Event\ProductAddedToCart $event
+        Event\ProductAdded $event
     )
     {
         $projection->add_product($event->product);
@@ -43,5 +43,21 @@ class State
     )
     {
         $projection->checkout();
+    }
+
+    protected function when_shopping_cart_emptied(
+        Projection $projection,
+        Event\Emptied $event
+    )
+    {
+        /* We don't care, it doesn't effect the state */
+    }
+
+    protected function when_shopping_cart_full(
+        Projection $projection,
+        Event\Full $event
+    )
+    {
+        /* We don't care, it doesn't effect the state */
     }
 }
