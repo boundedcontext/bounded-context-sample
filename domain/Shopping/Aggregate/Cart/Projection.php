@@ -3,6 +3,7 @@
 use BoundedContext\Index\Index;
 use BoundedContext\Contracts\ValueObject\Identifier;
 use BoundedContext\ValueObject\Boolean;
+
 use Domain\Shopping\Entity\Cart;
 use Domain\Shopping\Entity\Product;
 use Domain\Shopping\ValueObject\Quantity;
@@ -11,24 +12,28 @@ class Projection
 {
     /**
      * @name is_created
+     * @var  \BoundedContext\ValueObject\Boolean
      * @type \BoundedContext\ValueObject\Boolean
      */
     public $is_created;
 
     /**
      * @name is_checked_out
+     * @var \BoundedContext\ValueObject\Boolean
      * @type \BoundedContext\ValueObject\Boolean
      */
     public $is_checked_out;
 
     /**
      * @name cart
+     * @var \Domain\Shopping\Entity\Cart
      * @type \Domain\Shopping\Entity\Cart
      */
     public $cart;
 
     /**
-     * @name products
+     * @var \BoundedContext\Index\Index
+     * @id products
      * @type \BoundedContext\Index\Index<\Domain\Shopping\Entity\Product>
      */
     public $products;
@@ -42,21 +47,17 @@ class Projection
 
     public function add_product(Product $product)
     {
-        $this->products->add($product); // Throws Exists Exception.
+        $this->products->add($product);
     }
 
-    public function change_product_quantity(Identifier $product_id, Quantity $quantity)
+    public function change_product_quantity(Product $product)
     {
-        $product = $this->products->get($product_id); // Throws NotExists Exception.
-
-        $product->change_quantity($quantity);
-
-        $this->products->replace($product); // Throws NotExists Exception.
+        $this->products->replace($product);
     }
 
     public function remove_product(Identifier $product_id)
     {
-        $this->products->remove($product_id); // Throws Exists Exception.
+        $this->products->remove($product_id);
     }
 
     public function checkout()

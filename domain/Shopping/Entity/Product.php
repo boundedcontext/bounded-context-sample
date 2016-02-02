@@ -22,4 +22,9 @@ class Product extends AbstractEntity implements \BoundedContext\Contracts\Entity
     {
         return $this->quantity;
     }
+
+    public function change_quantity(Quantity $quantity)
+    {
+        return new Product($this->id, $quantity);
+    }
 }
