@@ -1,4 +1,4 @@
-<?php namespace Domain\Shopping\Aggregate\Cart\Invariant\IsCheckedOut;
+<?php namespace Domain\Shopping\Aggregate\Cart\Invariant\HasLessThan10Products;
 
 use BoundedContext\Contracts\Business\Invariant\Invariant as InvariantContract;
 

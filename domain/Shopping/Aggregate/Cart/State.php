@@ -1,39 +1,53 @@
 <?php namespace Domain\Shopping\Aggregate\Cart;
 
-use BoundedContext\Collection\Collection;
-use BoundedContext\Contracts\ValueObject\Identifier;
-use BoundedContext\Sourced\Aggregate\State\AbstractState;
-use Domain\Shopping\Aggregate\Cart\Entity\Cart;
-use Domain\Shopping\Aggregate\Cart\Entity\Product;
-use Domain\Shopping\ValueObject\Quantity;
-
-class State extends AbstractState implements \BoundedContext\Contracts\Sourced\Aggregate\State\State
+class State
 {
-    public $cart;
-    public $products;
-
-    public function create(Cart $cart)
+    protected function when_shopping_cart_created(
+        Model $model,
+        Flow $flow,
+        Event\Created $event
+    )
     {
-        $this->cart = $cart;
-        $this->products = new Collection();
+        $model->create($event->cart);
+        $flow->created();
     }
 
-    public function add_product(Product $product)
+    protected function when_shopping_cart_product_added_to_cart(
+        Model $model,
+        Flow $flow,
+        Event\ProductAddedToCart $event
+    )
     {
-        $this->products->add($product); // Throws Exists Exception.
+        $model->add_product($event->product);
     }
 
-    public function change_product_quantity(Identifier $product_id, Quantity $quantity)
+    protected function when_shopping_cart_product_quantity_changed(
+        Flow $flow,
+        Model $model,
+        Event\ProductQuantityChanged $event
+    )
     {
-        $product = $this->products->get($product_id); // Throws NotExists Exception.
-
-        $product->change_quantity($quantity);
-
-        $this->products->replace($product); // Throws NotExists Exception.
+        $model->change_product_quantity($event->product_id, $event->quantity);
     }
 
-    public function remove_product(Identifier $product_id)
+    protected function when_shopping_cart_product_removed_from_cart(
+        Flow $flow,
+        Model $model,
+        Event\ProductQuantityChanged $event
+    )
     {
-        $this->products->remove($product_id); // Throws Exists Exception.
+        $flow->not_full();
+        $model->remove_product($event->product_id);
+    }
+
+    protected function when_shopping_cart_checked_out(
+        Flow $flow,
+        Model $model,
+        Event\CheckedOut $event
+    )
+    {
+        $this->assert(IsNotCheckedOut\Invariant::class);
+
+        $flow->checked_out();
     }
 }

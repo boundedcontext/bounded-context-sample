@@ -1,78 +1,79 @@
 <?php namespace Domain\Shopping\Aggregate\Cart;
 
-use BoundedContext\Contracts\Sourced\Aggregate\Aggregate as AggregateContract;
-use BoundedContext\Sourced\Aggregate\AbstractAggregate;
+use Domain\Shopping\Aggregate\Cart\Invariant\HasOnlyOneCart;
 
-class Aggregate extends AbstractAggregate implements AggregateContract
+class Aggregate
 {
-    protected function when_shopping_cart_created(
+    protected function handle_create(
         State $state,
-        Event\Created $event
+        Command\Create $command
     )
     {
-        $this->assert(IsNotCreated\Invariant::class);
+        $this->assert->not(Created\Invariant::class);
+        $this->assert->is(HasOnlyOneCart\Invariant::class,
+            [$command->cart->member_id()]
+        );
 
-        // $flow->create();
-        $state->create($event->cart);
-
-        /* If "Empty" is part of the language externally.
-
-        -- I won't write the event handler for it, just assume it's there.
-
-        $this->apply(Event\Empty::class));
-
-        */
+        $state->apply(new Event\Created(
+            $command->id(),
+            $command->cart
+        ));
     }
 
-    protected function when_shopping_cart_product_added_to_cart(
+    protected function handle_add_product_to_cart(
         State $state,
-        Event\ProductAddedToCart $event
+        Command\AddProductToCart $command
     )
     {
-        $this->assert(IsFull\Invariant::class);
+        $this->assert->not(Full\Invariant::class);
+        $this->assert->not(CheckedOut\Invariant::class);
 
-        $state->add_product($event->product);
-
-        /* If "Full" is part of the language externally.
-
-        -- I won't write the event handler for it, just assume it's there.
-
-        $this->apply(Event\Full::class));
-
-        */
+        $state->apply(new Event\ProductAddedToCart(
+            $command->id(),
+            $command->product
+        ));
     }
 
-    protected function when_shopping_cart_product_quantity_changed(
+    protected function handle_change_product_quantity(
         State $state,
-        Event\ProductQuantityChanged $event
+        Command\ChangeProductQuantity $command
     )
     {
-        /* This could just be a property of the Collection/Index Object for $products. It depends on the language. */
-        $this->assert(ProductExists\Invariant::class,
+        $this->assert->not(CheckedOut\Invariant::class);
+
+        $state->apply(new Event\ProductQuantityChanged(
+            $command->id(),
+            $command->product_id,
+            $command->quantity
+        ));
+    }
+
+    protected function handle_remove_product_from_cart(
+        State $state,
+        Command\RemoveProductFromCart $command
+    )
+    {
+        $this->assert->not(Emptied\Invariant::class);
+        $this->assert->not(CheckedOut\Invariant::class);
+        $this->assert->not(ProductExists\Invariant::class,
             [$event->product_id]
         );
 
-        $state->change_product_quantity($event->product_id, $event->quantity);
+        $state->apply(new Event\ProductRemovedFromCart(
+            $command->id(),
+            $command->product_id
+        ));
     }
 
-    protected function when_shopping_cart_product_removed_from_cart(
+    protected function handle_checkout(
         State $state,
-        Event\ProductQuantityChanged $event
+        Command\Checkout $command
     )
     {
-        /* This could just be a property of the Collection/Index Object for $products. It depends on the language. */
-        $this->assert(ProductExists\Invariant::class,
-            [$event->product_id]
-        );
+        $this->assert->not(CheckedOut\Invariant::class);
 
-        $state->remove_product($event->product_id);
-    }
-
-    protected function when_shopping_cart_checked_out(
-        State $state,
-        Event\CheckedOut $event
-    )
-    {
-        $state->checkout();
+        $state->apply(new Event\CheckedOut(
+            $command->id()
+        ));
     }
 }
