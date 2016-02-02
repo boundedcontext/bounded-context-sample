@@ -7,7 +7,7 @@ use Domain\Shopping\Entity\Cart;
 use Domain\Shopping\Entity\Product;
 use Domain\Shopping\ValueObject\Quantity;
 
-class Model
+class Projection
 {
     /**
      * @name is_created

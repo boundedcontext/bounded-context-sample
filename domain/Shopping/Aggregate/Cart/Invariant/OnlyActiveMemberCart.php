@@ -1,8 +1,9 @@
-<?php namespace Domain\Shopping\Aggregate\Cart\Invariant\ExistingProduct;
+<?php namespace Domain\Shopping\Aggregate\Cart\Invariant;
 
 use BoundedContext\Contracts\Business\Invariant\Invariant as InvariantContract;
 
-interface Invariant extends InvariantContract
+interface OnlyActiveMemberCart extends InvariantContract
 {
     /* No need to fully implement this */
 }
+

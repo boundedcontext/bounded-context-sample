@@ -1,12 +1,5 @@
 <?php namespace Domain\Shopping\Aggregate\Cart;
 
-use Domain\Shopping\Aggregate\Cart\Invariant\Created;
-use Domain\Shopping\Aggregate\Cart\Invariant\Full;
-use Domain\Shopping\Aggregate\Cart\Invariant\Emptied;
-use Domain\Shopping\Aggregate\Cart\Invariant\CheckedOut;
-use Domain\Shopping\Aggregate\Cart\Invariant\ExistingProduct;
-use Domain\Shopping\Aggregate\Cart\Invariant\OnlyActiveMemberCart;
-
 class Aggregate
 {
     protected function handle_create(
@@ -14,10 +7,10 @@ class Aggregate
         Command\Create $command
     )
     {
-        $this->assert->not(Created\Invariant::class);
+        $this->assert->not(Invariant\Created::class);
 
         /* This Invariant uses a Projection */
-        $this->assert->is(OnlyActiveMemberCart\Invariant::class,
+        $this->assert->is(Invariant\OnlyActiveMemberCart::class,
             [$command->cart->member_id()]
         );
 
@@ -32,9 +25,9 @@ class Aggregate
         Command\AddProductToCart $command
     )
     {
-        $this->assert->not(CheckedOut\Invariant::class);
-        $this->assert->not(Full\Invariant::class);
-        $this->assert->not(ExistingProduct\Invariant::class,
+        $this->assert->not(Invariant\CheckedOut::class);
+        $this->assert->not(Invariant\Full::class);
+        $this->assert->not(Invariant\ExistingProduct::class,
             [$command->product_id]
         );
 
@@ -49,8 +42,8 @@ class Aggregate
         Command\ChangeProductQuantity $command
     )
     {
-        $this->assert->not(CheckedOut\Invariant::class);
-        $this->assert->is(ExistingProduct\Invariant::class,
+        $this->assert->not(Invariant\CheckedOut::class);
+        $this->assert->is(Invariant\ExistingProduct::class,
             [$command->product_id]
         );
 
@@ -66,9 +59,9 @@ class Aggregate
         Command\RemoveProductFromCart $command
     )
     {
-        $this->assert->not(CheckedOut\Invariant::class);
-        $this->assert->not(Emptied\Invariant::class);
-        $this->assert->is(ExistingProduct\Invariant::class,
+        $this->assert->not(Invariant\CheckedOut::class);
+        $this->assert->not(Invariant\Emptied::class);
+        $this->assert->is(Invariant\ExistingProduct::class,
             [$command->product_id]
         );
 
@@ -83,7 +76,7 @@ class Aggregate
         Command\Checkout $command
     )
     {
-        $this->assert->not(CheckedOut\Invariant::class);
+        $this->assert->not(Invariant\CheckedOut::class);
 
         $state->apply(new Event\CheckedOut(
             $command->id()

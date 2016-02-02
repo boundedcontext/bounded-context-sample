@@ -3,45 +3,45 @@
 class State
 {
     protected function when_shopping_cart_created(
-        Model $model,
+        Projection $projection,
         Event\Created $event
     )
     {
-        $model->create($event->cart);
+        $projection->create($event->cart);
     }
 
     protected function when_shopping_cart_product_added_to_cart(
-        Model $model,
+        Projection $projection,
         Event\ProductAddedToCart $event
     )
     {
-        $model->add_product($event->product);
+        $projection->add_product($event->product);
     }
 
     protected function when_shopping_cart_product_quantity_changed(
-        Model $model,
+        Projection $projection,
         Event\ProductQuantityChanged $event
     )
     {
-        $model->change_product_quantity(
+        $projection->change_product_quantity(
             $event->product_id,
             $event->quantity
         );
     }
 
     protected function when_shopping_cart_product_removed_from_cart(
-        Model $model,
+        Projection $projection,
         Event\ProductQuantityChanged $event
     )
     {
-        $model->remove_product($event->product_id);
+        $projection->remove_product($event->product_id);
     }
 
     protected function when_shopping_cart_checked_out(
-        Model $model,
+        Projection $projection,
         Event\CheckedOut $event
     )
     {
-        $model->checkout();
+        $projection->checkout();
     }
 }

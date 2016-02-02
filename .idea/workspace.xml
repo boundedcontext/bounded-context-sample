@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7b61b51-c844-42a8-b267-c6df1d1206e1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/ValueObject/Quantity.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/ValueObject/Quantity.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Entity/Cart.php" afterPath="$PROJECT_DIR$/domain/Shopping/Entity/Cart.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Entity/Product.php" afterPath="$PROJECT_DIR$/domain/Shopping/Entity/Product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Command/AddProductToCart.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Command/AddProductToCart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Command/Create.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Command/Create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Event/Created.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Event/Created.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Event/ProductAddedToCart.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Event/ProductAddedToCart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Projection/OnlyActiveMemberCart/Projection.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Projection/OnlyActiveMemberCart/Projector.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Projection/OnlyActiveMemberCart/Queryable.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct/Invariant.php" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut/Invariant.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created/Invariant.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Emptied/Invariant.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Emptied.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full/Invariant.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart/Invariant.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Projection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php" afterPath="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php" />
     </list>
     <ignored path="bounded-context-laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,19 +45,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
-        <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Aggregate/State/Snapshot/Snapshot.php" />
-        <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Aggregate/State/State.php" />
-        <option value="$PROJECT_DIR$/workbench/bounded-context/src/Sourced/Aggregate/State/AbstractState.php" />
-        <option value="$PROJECT_DIR$/workbench/bounded-context/src/ValueObject/Boolean.php" />
-        <option value="$PROJECT_DIR$/workbench/bounded-context/src/Sourced/Aggregate/State/Snapshot/Snapshot.php" />
-        <option value="$PROJECT_DIR$/domain/Test/Aggregate/Flow/Flow.php" />
-        <option value="$PROJECT_DIR$/domain/Test/Entity/User.php" />
-        <option value="$PROJECT_DIR$/domain/Test/Aggregate/User/State/Snapshot.php" />
-        <option value="$PROJECT_DIR$/domain/Test/Aggregate/User/State/Projector.php" />
-        <option value="$PROJECT_DIR$/domain/Test/Aggregate/User/State/State.php" />
-        <option value="$PROJECT_DIR$/domain/Test/Aggregate/User/Aggregate.php" />
-        <option value="$PROJECT_DIR$/domain/Test/Aggregate/User/Handler.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Sourced/Aggregate/Repository.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Sourced/Aggregate/Aggregate.php" />
         <option value="$PROJECT_DIR$/workbench/bounded-context/src/Sourced/Aggregate/AbstractAggregate.php" />
@@ -77,19 +70,32 @@
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CartHasLessThan10Products/Invariant.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Flow.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/HasOnlyOneCart/Invariant.php" />
-        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart/Invariant.php" />
-        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php" />
-        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" />
-        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created/Invariant.php" />
-        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct/Invariant.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full/Invariant.php" />
-        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut/Invariant.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Empty/Invariant.php" />
-        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/ValueObject/Quantity.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Entity/Cart.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/Entity/Product.php" />
         <option value="$PROJECT_DIR$/domain/Shopping/ValueObject/Quantity.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Projection.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full/Full.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut/CheckedOut.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created/Created.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Emptied/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Emptied/Emptied.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Emptied.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct/Invariant.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct/ExistingProduct.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart.php" />
+        <option value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php" />
       </list>
     </option>
   </component>
@@ -654,222 +660,6 @@
               <option name="myItemId" value="domain" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ValueObject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Invariant" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Invariant" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EmailAddressMustBeUnique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Invariant" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EmailAddressMustBeUnique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Projection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aggregate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="User" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aggregate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="User" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Event" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aggregate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="User" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Command" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bounded-context-sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Aggregate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -899,6 +689,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Shopping" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Aggregate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bounded-context-laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bounded-context-sample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -914,20 +730,20 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/colinlyons1/Documents/Github/bounded-context-laravel/app/BoundedContext/Test/Aggregate/User/State.php" />
     <property name="php.override.implement.member.chooser.php.doc" value="COPY_ALWAYS" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/domain/Shopping/Entity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant" />
     <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Projection" />
-      <recent name="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Projector" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant" />
       <recent name="$PROJECT_DIR$/workbench/bounded-context/src/Projection" />
       <recent name="$PROJECT_DIR$/domain/Test/Aggregate/User/Event" />
       <recent name="$PROJECT_DIR$/workbench/bounded-context-laravel/src" />
       <recent name="$PROJECT_DIR$/workbench/bounded-context-laravel/src/Laravel" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Projection" />
+      <recent name="$PROJECT_DIR$/workbench/bounded-context/src/Contracts/Projector" />
     </key>
   </component>
   <component name="RunManager">
@@ -1043,22 +859,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/ValueObject/Boolean.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6603774">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Test/Aggregate/User/State/Invariant/IsCreated.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8176101">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/workbench/bounded-context/src/Serializable/AbstractSerializable.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1509434">
@@ -1379,88 +1179,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart/Invariant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25157234">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0754716">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding>
-            <element signature="e#49#80#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08805031">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct/Invariant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6666665">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full/Invariant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25157234">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut/Invariant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25157234">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Emptied/Invariant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25157234">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created/Invariant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25157234">
-          <caret line="8" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/Shopping/Entity/Cart.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.754717">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="e#41#93#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3144654">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="e#49#102#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1475,18 +1199,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/ValueObject/Quantity.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3773585">
-          <caret line="12" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/Shopping/ValueObject/Quantity.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44025156">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Projection/OnlyActiveMemberCart/Projector.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Projection/OnlyActiveMemberCart/Queryable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Projection/OnlyActiveMemberCart/Projection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Full.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/CheckedOut.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Created.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12578617">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/Emptied.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/ExistingProduct.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25157234">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Invariant/OnlyActiveMemberCart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28301886">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/State.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9119497">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Projection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.918239">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="e#49#80#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6289308">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding />
         </state>
       </provider>
