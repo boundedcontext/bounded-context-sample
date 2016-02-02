@@ -32,6 +32,9 @@ class Aggregate
     {
         $this->assert->not(Full\Invariant::class);
         $this->assert->not(CheckedOut\Invariant::class);
+        $this->assert->not(ExistingProduct\Invariant::class,
+            [$command->product_id]
+        );
 
         $state->apply(new Event\ProductAddedToCart(
             $command->id(),
@@ -46,7 +49,7 @@ class Aggregate
     {
         $this->assert->not(CheckedOut\Invariant::class);
         $this->assert->is(ExistingProduct\Invariant::class,
-            [$event->product_id]
+            [$command->product_id]
         );
 
         $state->apply(new Event\ProductQuantityChanged(
@@ -64,7 +67,7 @@ class Aggregate
         $this->assert->not(Emptied\Invariant::class);
         $this->assert->not(CheckedOut\Invariant::class);
         $this->assert->is(ExistingProduct\Invariant::class,
-            [$event->product_id]
+            [$command->product_id]
         );
 
         $state->apply(new Event\ProductRemovedFromCart(
