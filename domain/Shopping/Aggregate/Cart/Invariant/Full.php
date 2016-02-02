@@ -1,8 +1,28 @@
 <?php namespace Domain\Shopping\Aggregate\Cart\Invariant;
 
-use BoundedContext\Contracts\Business\Invariant\Invariant as InvariantContract;
+use BoundedContext\Contracts\Business\Invariant\Exception;
+use BoundedContext\Contracts\Business\Invariant\Invariant;
+use Domain\Shopping\Aggregate\Cart\Projection;
 
-interface Full extends InvariantContract
+class Full implements Invariant
 {
-    /* No need to fully implement this */
+    private $projection;
+
+    public function __construct(Projection $projection)
+    {
+        $this->projection = $projection;
+    }
+
+    public function is_satisfied()
+    {
+        return ($this->projection->products->count() >= 10);
+    }
+
+    public function assert()
+    {
+        if(!$this->is_satisfied())
+        {
+            throw new Exception("The Cart is full.");
+        }
+    }
 }
