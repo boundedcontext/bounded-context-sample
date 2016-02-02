@@ -27,8 +27,8 @@
       <file leaf-file-name="Aggregate.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.8301888">
-              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5660377">
+              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
               <folding>
                 <element signature="e#49#102#0#PHP" expanded="true" />
               </folding>
@@ -1536,8 +1536,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/Shopping/Aggregate/Cart/Aggregate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.8301888">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5660377">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
           <folding>
             <element signature="e#49#102#0#PHP" expanded="true" />
           </folding>

@@ -15,6 +15,8 @@ class Aggregate
     )
     {
         $this->assert->not(Created\Invariant::class);
+
+        /* This Invariant uses a Projection */
         $this->assert->is(OnlyActiveMemberCart\Invariant::class,
             [$command->cart->member_id()]
         );
