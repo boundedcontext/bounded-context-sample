@@ -3,8 +3,8 @@
 use BoundedContext\Index\Index;
 use BoundedContext\Contracts\ValueObject\Identifier;
 use BoundedContext\ValueObject\Boolean;
-use Domain\Shopping\Aggregate\Cart\Entity\Cart;
-use Domain\Shopping\Aggregate\Cart\Entity\Product;
+use Domain\Shopping\Entity\Cart;
+use Domain\Shopping\Entity\Product;
 use Domain\Shopping\ValueObject\Quantity;
 
 class Model
@@ -23,13 +23,13 @@ class Model
 
     /**
      * @name cart
-     * @type \Domain\Shopping\Aggregate\Cart\Entity\Cart
+     * @type \Domain\Shopping\Entity\Cart
      */
     public $cart;
 
     /**
      * @name products
-     * @type \BoundedContext\Index\Index<\Domain\Shopping\Aggregate\Cart\Entity\Product>
+     * @type \BoundedContext\Index\Index<\Domain\Shopping\Entity\Product>
      */
     public $products;
 

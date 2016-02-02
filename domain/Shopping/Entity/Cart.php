@@ -1,4 +1,4 @@
-<?php namespace Domain\Shopping\Aggregate\Cart\Entity;
+<?php namespace Domain\Shopping\Entity;
 
 use BoundedContext\Contracts\ValueObject\Identifier;
 use BoundedContext\Entity\AbstractEntity;

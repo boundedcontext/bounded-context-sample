@@ -3,7 +3,7 @@
 use BoundedContext\Contracts\Event\Event;
 use BoundedContext\Contracts\ValueObject\Identifier;
 use BoundedContext\Event\AbstractEvent;
-use Domain\Shopping\Aggregate\Cart\Entity\Product;
+use Domain\Shopping\Entity\Product;
 
 class ProductAddedToCart extends AbstractEvent implements Event
 {

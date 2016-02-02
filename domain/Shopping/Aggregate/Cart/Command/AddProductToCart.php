@@ -3,7 +3,7 @@
 use BoundedContext\Command\AbstractCommand;
 use BoundedContext\Contracts\Command\Command;
 use BoundedContext\Contracts\ValueObject\Identifier;
-use Domain\Shopping\Aggregate\Cart\Entity\Product;
+use Domain\Shopping\Entity\Product;
 
 class AddProductToCart extends AbstractCommand implements Command
 {

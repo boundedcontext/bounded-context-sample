@@ -4,7 +4,7 @@ use BoundedContext\Command\AbstractCommand;
 use BoundedContext\Contracts\Command\Command;
 use BoundedContext\Contracts\ValueObject\Identifier;
 
-use Domain\Shopping\Aggregate\Cart\Entity\Cart;
+use Domain\Shopping\Entity\Cart;
 
 class Create extends AbstractCommand implements Command
 {
