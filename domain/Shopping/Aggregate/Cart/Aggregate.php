@@ -1,6 +1,8 @@
 <?php namespace Domain\Shopping\Aggregate\Cart;
 
-class Aggregate
+use BoundedContext\Sourced\Aggregate\AbstractAggregate;
+
+class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\Sourced\Aggregate\Aggregate
 {
     protected function handle_create(
         Command\Create $command

@@ -1,6 +1,6 @@
 <?php namespace Domain\Shopping\Aggregate\Cart;
 
-class State
+class State implements \BoundedContext\Contracts\Sourced\Aggregate\State\State
 {
     protected function when_shopping_cart_created(
         Projection $projection,

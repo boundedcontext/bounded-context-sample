@@ -1,14 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use BoundedContext\Contracts\Bus\Dispatcher;
-use BoundedContext\Laravel\Illuminate\Projector;
-use BoundedContext\Laravel\Illuminate\Workflow;
-use Domain\Test\Entity\User;
-use Domain\Test\ValueObject\Username;
-use Domain\Test\ValueObject\EmailAddress;
-use Domain\Test\ValueObject\Password;
-use Domain\Test\Aggregate\User\Command;
+use Domain\Shopping\Aggregate\Cart\Command\Create;
 
+use Domain\Shopping\Entity\Cart;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 
@@ -43,18 +38,17 @@ class TestController extends Controller
 
         $player->reset();
 
-        $this->bus->dispatch(new Command\Create(
+        $this->bus->dispatch(new Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
-            new User(
+            new Cart(
                 new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
-                new Username('lyonscf'),
-                new EmailAddress('colin@tercet.io'),
-                (new Password('password'))->encrypt()
+                new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f7')
             )
         ));
 
         dd('roflolol');
 
+        /*
         $this->bus->dispatch(new Command\Create(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f7'),
             new User(
@@ -75,19 +69,17 @@ class TestController extends Controller
             new Username('lyonscf3')
         ));
 
-        /*
         $this->bus->dispatch(new Command\Delete(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
         ));
+
         */
 
-        // Play Application Workflows
-        $player = new Workflow\Player($this->app, 'app');
-        $player->play();
+        $player = $player_builder
+            ->all()
+            ->get();
 
-        // Play Application Projectors
-        $projection_player = new Projector\Player($this->app, 'app');
-        $projection_player->play();
+        $player->play();
 
         dd($this->app->make('BoundedContext\Contracts\Event\Log'));
     }

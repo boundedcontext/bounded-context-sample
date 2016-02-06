@@ -1,14 +1,15 @@
 <?php namespace Domain\Shopping\Aggregate\Cart;
 
+
+use BoundedContext\Contracts\Projection\Queryable;
 use BoundedContext\Index\Index;
 use BoundedContext\Contracts\ValueObject\Identifier;
 use BoundedContext\ValueObject\Boolean;
 
 use Domain\Shopping\Entity\Cart;
 use Domain\Shopping\Entity\Product;
-use Domain\Shopping\ValueObject\Quantity;
 
-class Projection
+class Projection implements Queryable
 {
     /**
      * @name is_created
