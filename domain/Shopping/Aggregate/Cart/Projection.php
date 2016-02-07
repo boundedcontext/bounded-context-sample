@@ -1,41 +1,41 @@
 <?php namespace Domain\Shopping\Aggregate\Cart;
 
-
-use BoundedContext\Contracts\Projection\Queryable;
+use BoundedContext\Contracts\Projection\Projection as ProjectionContract;
+use BoundedContext\Contracts\Projection\Queryable as QueryableContract;
 use BoundedContext\Index\Index;
 use BoundedContext\Contracts\ValueObject\Identifier;
+use BoundedContext\Sourced\Aggregate\State\AbstractProjection;
 use BoundedContext\ValueObject\Boolean;
 
 use Domain\Shopping\Entity\Cart;
 use Domain\Shopping\Entity\Product;
 
-class Projection implements Queryable
+class Projection extends AbstractProjection implements ProjectionContract, QueryableContract
 {
     /**
-     * @name is_created
      * @var  \BoundedContext\ValueObject\Boolean
-     * @type \BoundedContext\ValueObject\Boolean
+     * @as is_created
      */
     public $is_created;
 
     /**
-     * @name is_checked_out
      * @var \BoundedContext\ValueObject\Boolean
-     * @type \BoundedContext\ValueObject\Boolean
+     * @as is_checked_out
      */
     public $is_checked_out;
 
     /**
-     * @name cart
      * @var \Domain\Shopping\Entity\Cart
-     * @type \Domain\Shopping\Entity\Cart
+     * @as cart
      */
     public $cart;
 
     /**
      * @var \BoundedContext\Index\Index
-     * @id products
-     * @type \BoundedContext\Index\Index<\Domain\Shopping\Entity\Product>
+     *
+     * @collection
+     * @of \Domain\Shopping\Entity\Product
+     * @as products
      */
     public $products;
 

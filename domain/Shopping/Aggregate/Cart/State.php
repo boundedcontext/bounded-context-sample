@@ -1,13 +1,17 @@
 <?php namespace Domain\Shopping\Aggregate\Cart;
 
-class State implements \BoundedContext\Contracts\Sourced\Aggregate\State\State
+use BoundedContext\Sourced\Aggregate\State\AbstractState;
+
+class State extends AbstractState implements \BoundedContext\Contracts\Sourced\Aggregate\State\State
 {
     protected function when_shopping_cart_created(
         Projection $projection,
         Event\Created $event
     )
     {
-        $projection->create($event->cart);
+        $projection->create(
+            $event->cart
+        );
     }
 
     protected function when_shopping_cart_product_added_to_cart(
@@ -15,7 +19,9 @@ class State implements \BoundedContext\Contracts\Sourced\Aggregate\State\State
         Event\ProductAdded $event
     )
     {
-        $projection->add_product($event->product);
+        $projection->add_product(
+            $event->product
+        );
     }
 
     protected function when_shopping_cart_product_quantity_changed(
@@ -24,17 +30,18 @@ class State implements \BoundedContext\Contracts\Sourced\Aggregate\State\State
     )
     {
         $projection->change_product_quantity(
-            $event->product_id,
-            $event->quantity
+            $event->product
         );
     }
 
     protected function when_shopping_cart_product_removed_from_cart(
         Projection $projection,
-        Event\ProductQuantityChanged $event
+        Event\ProductRemoved $event
     )
     {
-        $projection->remove_product($event->product_id);
+        $projection->remove_product(
+            $event->product_id
+        );
     }
 
     protected function when_shopping_cart_checked_out(
@@ -45,12 +52,13 @@ class State implements \BoundedContext\Contracts\Sourced\Aggregate\State\State
         $projection->checkout();
     }
 
+    /*
     protected function when_shopping_cart_emptied(
         Projection $projection,
         Event\Emptied $event
     )
     {
-        /* We don't care, it doesn't effect the state */
+        // We don't care, it doesn't effect the state
     }
 
     protected function when_shopping_cart_full(
@@ -58,6 +66,7 @@ class State implements \BoundedContext\Contracts\Sourced\Aggregate\State\State
         Event\Full $event
     )
     {
-        /* We don't care, it doesn't effect the state */
+        // We don't care, it doesn't effect the state
     }
+    */
 }
