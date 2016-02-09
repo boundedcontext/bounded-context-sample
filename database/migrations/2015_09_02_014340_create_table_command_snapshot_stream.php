@@ -15,9 +15,9 @@ class CreateTableCommandSnapshotStream extends Migration
         Schema::create('command_snapshot_stream', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('log_id')->unique();
-            $table->string('log_item_id', 36)->unique();
+            $table->string('log_snapshot_id', 36)->unique();
             $table->string('aggregate_id', 36);
-            $table->integer('version')->default(1);
+            $table->integer('version')->default(0);
         });
     }
 

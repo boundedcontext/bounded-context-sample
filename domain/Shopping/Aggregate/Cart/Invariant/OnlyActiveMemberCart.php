@@ -1,31 +1,23 @@
 <?php namespace Domain\Shopping\Aggregate\Cart\Invariant;
 
-use BoundedContext\Contracts\Business\Invariant\Exception;
+use BoundedContext\Business\Invariant\AbstractInvariant;
 use BoundedContext\Contracts\Business\Invariant\Invariant;
 use BoundedContext\Contracts\ValueObject\Identifier;
 use Domain\Shopping\Aggregate\Cart\Projection\OnlyActiveMemberCart\Queryable;
 
-class OnlyActiveMemberCart implements Invariant
+class OnlyActiveMemberCart extends AbstractInvariant implements Invariant
 {
-    private $queryable;
-    private $member_id;
+    protected $member_id;
 
-    public function __construct(Queryable $queryable, Identifier $member_id)
+    protected function assumptions(Identifier $member_id)
     {
-        $this->queryable = $queryable;
         $this->member_id = $member_id;
     }
 
-    public function is_satisfied()
+    protected function satisfy(Queryable $queryable)
     {
-        return (!$this->queryable->has_active_cart($this->member_id));
-    }
-
-    public function assert()
-    {
-        if(!$this->is_satisfied())
-        {
-            throw new Exception("The Member " . $this->member_id->serialize() . " already has an active Cart.");
-        }
+        return (!$queryable->has_active_cart(
+            $this->member_id
+        ));
     }
 }

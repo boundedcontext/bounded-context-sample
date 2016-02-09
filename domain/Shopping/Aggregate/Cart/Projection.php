@@ -39,11 +39,18 @@ class Projection extends AbstractProjection implements ProjectionContract, Query
      */
     public $products;
 
+    public function __construct()
+    {
+        $this->is_created = new Boolean(false);
+        $this->is_checked_out = new Boolean(false);
+
+        $this->products = new Index();
+    }
+
     public function create(Cart $cart)
     {
         $this->is_created = new Boolean(true);
         $this->cart = $cart;
-        $this->products = new Index();
     }
 
     public function add_product(Product $product)

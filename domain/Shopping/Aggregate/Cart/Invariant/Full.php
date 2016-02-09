@@ -1,28 +1,13 @@
 <?php namespace Domain\Shopping\Aggregate\Cart\Invariant;
 
-use BoundedContext\Contracts\Business\Invariant\Exception;
+use BoundedContext\Business\Invariant\AbstractInvariant;
 use BoundedContext\Contracts\Business\Invariant\Invariant;
-use Domain\Shopping\Aggregate\Cart\Projection;
+use Domain\Shopping\Aggregate\Cart\Projection as Queryable;
 
-class Full implements Invariant
+class Full extends AbstractInvariant implements Invariant
 {
-    private $projection;
-
-    public function __construct(Projection $projection)
+    protected function satisfy(Queryable $queryable)
     {
-        $this->projection = $projection;
-    }
-
-    public function is_satisfied()
-    {
-        return ($this->projection->products->count() >= 10);
-    }
-
-    public function assert()
-    {
-        if(!$this->is_satisfied())
-        {
-            throw new Exception("The Cart is full.");
-        }
+        return ($queryable->products->count() >= 10);
     }
 }

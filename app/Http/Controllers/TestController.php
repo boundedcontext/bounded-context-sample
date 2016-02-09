@@ -23,11 +23,11 @@ class TestController extends Controller
     public function create(Request $request)
     {
         // Reset Event Log/Stream
-        $log = $this->app->make('BoundedContext\Contracts\Event\Log');
+        $log = $this->app->make('EventLog');
         $log->reset();
 
         // Reset Command Log/Stream
-        $log = $this->app->make('BoundedContext\Contracts\Command\Log');
+        $log = $this->app->make('CommandLog');
         $log->reset();
 
         $player_builder = $this->app->make('BoundedContext\Laravel\Player\Collection\Builder');
@@ -39,7 +39,6 @@ class TestController extends Controller
         $player->reset();
 
         $this->bus->dispatch(new Create(
-            new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
             new Cart(
                 new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
                 new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f7')

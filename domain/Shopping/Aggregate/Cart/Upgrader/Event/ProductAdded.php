@@ -1,10 +1,10 @@
-<?php namespace Infrastructure\Domain\Shopping\Cart\Upgrader\Command;
+<?php namespace Domain\Shopping\Aggregate\Cart\Upgrader\Event;
 
 use BoundedContext\Contracts\Schema\Schema;
 use BoundedContext\Contracts\Schema\Upgrader;
 use BoundedContext\Schema\Upgrader\AbstractUpgrader;
 
-class ChangeProductQuantity extends AbstractUpgrader implements Upgrader
+class ProductAdded extends AbstractUpgrader implements Upgrader
 {
     protected function when_version_0(Schema $schema)
     {

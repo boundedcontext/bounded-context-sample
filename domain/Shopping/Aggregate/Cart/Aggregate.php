@@ -8,10 +8,15 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\S
         Command\Create $command
     )
     {
-        $this->assert->not(Invariant\Created::class);
-        $this->assert->is(Invariant\OnlyActiveMemberCart::class,
-            [$command->cart->member_id()]
-        );
+        $this->check->that(Invariant\Created::class)
+            ->not()
+            ->asserts();
+
+        $this->check->that(Invariant\OnlyActiveMemberCart::class)
+            ->assuming([$command->cart->member_id()])
+            ->asserts();
+
+        /* ---------------- */
 
         $this->apply(new Event\Created(
             $command->id(),
@@ -27,18 +32,29 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\S
         Command\AddProduct $command
     )
     {
-        $this->assert->not(Invariant\CheckedOut::class);
-        $this->assert->not(Invariant\Full::class);
-        $this->assert->not(Invariant\ExistingProduct::class,
-            [$command->product->id()]
-        );
+        $this->check->that(Invariant\CheckedOut::class)
+            ->not()
+            ->asserts();
+
+        $this->check->that(Invariant\Full::class)
+            ->not()
+            ->asserts();
+
+        $this->check->that(Invariant\ProductExists::class)
+            ->assuming([$command->product->id()])
+            ->not()
+            ->asserts();
+
+        /* ---------------- */
 
         $this->apply(new Event\ProductAdded(
             $command->id(),
             $command->product
         ));
 
-        if($this->check->is(Invariant\Full::class))
+        /* ---------------- */
+
+        if($this->check->that(Invariant\Full::class)->is_satisfied())
         {
             $this->apply(new Event\Full(
                 $command->id()
@@ -50,10 +66,15 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\S
         Command\ChangeProductQuantity $command
     )
     {
-        $this->assert->not(Invariant\CheckedOut::class);
-        $this->assert->is(Invariant\ExistingProduct::class,
-            [$command->product->id()]
-        );
+        $this->check->that(Invariant\CheckedOut::class)
+            ->not()
+            ->asserts();
+
+        $this->check->that(Invariant\ProductExists::class)
+            ->assuming([$command->product->id()])
+            ->asserts();
+
+        /* ---------------- */
 
         $this->apply(new Event\ProductQuantityChanged(
             $command->id(),
@@ -65,17 +86,24 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\S
         Command\RemoveProduct $command
     )
     {
-        $this->assert->not(Invariant\CheckedOut::class);
-        $this->assert->is(Invariant\ExistingProduct::class,
-            [$command->product_id]
-        );
+        $this->check->that(Invariant\CheckedOut::class)
+            ->not()
+            ->asserts();
+
+        $this->check->that(Invariant\ProductExists::class)
+            ->assuming([$command->product_id])
+            ->asserts();
+
+        /* ---------------- */
 
         $this->apply(new Event\ProductRemoved(
             $command->id(),
             $command->product_id
         ));
 
-        if($this->check->is(Invariant\Emptied::class))
+        /* ---------------- */
+
+        if($this->check->that(Invariant\Emptied::class)->is_satisfied())
         {
             $this->apply(new Event\Emptied(
                 $command->id()
@@ -87,7 +115,11 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\S
         Command\Checkout $command
     )
     {
-        $this->assert->not(Invariant\CheckedOut::class);
+        $this->check->that(Invariant\CheckedOut::class)
+            ->not()
+            ->asserts();
+
+        /* ---------------- */
 
         $this->apply(new Event\CheckedOut(
             $command->id()

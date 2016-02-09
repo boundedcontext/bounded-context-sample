@@ -18,9 +18,7 @@ return [
     'domain' => [
 
         'projectors' => [
-
-            //'da54ebc1-1b78-4924-97bf-8463d25aafc8' => \Domain\Test\Invariant\EmailAddressMustBeUnique\Projection\Projector::class,
-            //'6eaac031-5bc4-4f4b-aae8-8cb80bab27f9' => \Domain\Test\Invariant\UsernameMustBeUnique\Projection\Projector::class,
+            '121837f2-6b4a-4450-855a-94bc23d2db49' => \Domain\Shopping\Aggregate\Cart\Projection\OnlyActiveMemberCart\Projector::class,
         ],
 
         'workflows' => [

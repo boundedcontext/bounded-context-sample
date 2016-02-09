@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableEventSnapshotStream extends Migration
+class CreateTableSnapshotsAggregateState extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateTableEventSnapshotStream extends Migration
      */
     public function up()
     {
-        Schema::create('event_snapshot_stream', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('log_id')->unique();
-            $table->string('log_snapshot_id', 36)->unique();
-            $table->string('aggregate_id', 36);
+        Schema::create('snapshots_aggregate_state', function (Blueprint $table) {
+            $table->string('id', 36)->unique();
+            $table->dateTimeTz('occurred_at');
             $table->integer('version')->default(0);
+            $table->text('state');
         });
     }
 
@@ -28,6 +27,6 @@ class CreateTableEventSnapshotStream extends Migration
      */
     public function down()
     {
-        Schema::drop('event_snapshot_stream');
+        Schema::drop('snapshots_aggregate_state');
     }
 }

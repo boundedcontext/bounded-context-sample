@@ -1,28 +1,13 @@
 <?php namespace Domain\Shopping\Aggregate\Cart\Invariant;
 
-use BoundedContext\Contracts\Business\Invariant\Exception;
+use BoundedContext\Business\Invariant\AbstractInvariant;
 use BoundedContext\Contracts\Business\Invariant\Invariant;
-use Domain\Shopping\Aggregate\Cart\Projection;
+use Domain\Shopping\Aggregate\Cart\Projection as Queryable;
 
-class Created implements Invariant
+class Created extends AbstractInvariant implements Invariant
 {
-    private $projection;
-
-    public function __construct(Projection $projection)
+    protected function satisfy(Queryable $queryable)
     {
-        $this->projection = $projection;
-    }
-
-    public function is_satisfied()
-    {
-        return $this->projection->is_created->true();
-    }
-
-    public function assert()
-    {
-        if(!$this->is_satisfied())
-        {
-            throw new Exception("The Aggregate is already created.");
-        }
+        return $queryable->is_created->true();
     }
 }

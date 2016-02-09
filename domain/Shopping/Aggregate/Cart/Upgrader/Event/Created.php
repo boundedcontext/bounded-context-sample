@@ -1,17 +1,17 @@
-<?php namespace Infrastructure\Domain\Shopping\Cart\Upgrader\Event;
+<?php namespace Domain\Shopping\Aggregate\Cart\Upgrader\Event;
 
 use BoundedContext\Contracts\Schema\Schema;
 use BoundedContext\Contracts\Schema\Upgrader;
 use BoundedContext\Schema\Upgrader\AbstractUpgrader;
 
-class ProductAdded extends AbstractUpgrader implements Upgrader
+class Created extends AbstractUpgrader implements Upgrader
 {
     protected function when_version_0(Schema $schema)
     {
-        $schema->add('product', function() {
+        $schema->add('cart', function($cart) {
             return [
                 'id' => null,
-                'quantity' => 0
+                'member_id' => null
             ];
         });
     }

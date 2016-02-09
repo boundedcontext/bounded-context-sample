@@ -6,7 +6,7 @@ use Domain\Shopping\Entity\Cart;
 
 class Projection extends AbstractProjection implements \Domain\Shopping\Aggregate\Cart\Projection\OnlyActiveMemberCart\Projection
 {
-    protected $table = 'projections_domain_shopping_cart_active_member_carts';
+    protected $table = 'projections_domain_shopping_active_carts';
 
     /**
      * @var Queryable $queryable
@@ -19,8 +19,7 @@ class Projection extends AbstractProjection implements \Domain\Shopping\Aggregat
     {
         $this->query()->insert([
             'id' => $cart->id()->serialize(),
-            'member_id' => $cart->member_id()->serialize(),
-            'is_checked_out' => 0
+            'member_id' => $cart->member_id()->serialize()
         ]);
     }
 
@@ -28,7 +27,7 @@ class Projection extends AbstractProjection implements \Domain\Shopping\Aggregat
     {
         $this->query()
             ->where('id', $cart_id->serialize())
-            ->update(['is_checked_out' => 1])
+            ->delete();
         ;
     }
 }

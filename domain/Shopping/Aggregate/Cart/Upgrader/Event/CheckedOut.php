@@ -1,4 +1,4 @@
-<?php namespace Infrastructure\Domain\Shopping\Cart\Upgrader\Command;
+<?php namespace Domain\Shopping\Aggregate\Cart\Upgrader\Event;
 
 use BoundedContext\Contracts\Schema\Schema;
 use BoundedContext\Contracts\Schema\Upgrader;
