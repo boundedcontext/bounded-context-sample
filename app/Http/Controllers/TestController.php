@@ -1,9 +1,16 @@
 <?php namespace App\Http\Controllers;
 
 use BoundedContext\Contracts\Bus\Dispatcher;
+
 use Domain\Shopping\Aggregate\Cart\Command\Create;
+use Domain\Shopping\Aggregate\Cart\Command\AddProduct;
+use Domain\Shopping\Aggregate\Cart\Command\ChangeProductQuantity;
+use Domain\Shopping\Aggregate\Cart\Command\RemoveProduct;
+use Domain\Shopping\Aggregate\Cart\Command\CheckOut;
 
 use Domain\Shopping\Entity\Cart;
+use Domain\Shopping\Entity\Product;
+use Domain\Shopping\ValueObject\Quantity;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 
@@ -30,6 +37,10 @@ class TestController extends Controller
         $log = $this->app->make('CommandLog');
         $log->reset();
 
+        // Reset Aggregate State Snapshot
+        $connection = $this->app->make('db');
+        $connection->table('snapshots_aggregate_state')->delete();
+
         $player_builder = $this->app->make('BoundedContext\Laravel\Player\Collection\Builder');
 
         $player = $player_builder
@@ -45,41 +56,45 @@ class TestController extends Controller
             )
         ));
 
-        dd('roflolol');
-
-        /*
-        $this->bus->dispatch(new Command\Create(
-            new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f7'),
-            new User(
-                new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f7'),
-                new Username('bphilson2'),
-                new EmailAddress('bphilson1@gmail.com'),
-                (new Password('roflcopter'))->encrypt()
+        $this->bus->dispatch(new AddProduct(
+            new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
+            new Product(
+                new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f9'),
+                new Quantity(1)
             )
         ));
 
-        $this->bus->dispatch(new Command\ChangeUsername(
+        $this->bus->dispatch(new AddProduct(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
-            new Username('lyonscf2')
+            new Product(
+                new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f0'),
+                new Quantity(5)
+            )
         ));
 
-        $this->bus->dispatch(new Command\ChangeUsername(
+        $this->bus->dispatch(new ChangeProductQuantity(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
-            new Username('lyonscf3')
+            new Product(
+                new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f0'),
+                new Quantity(7)
+            )
         ));
 
-        $this->bus->dispatch(new Command\Delete(
+        $this->bus->dispatch(new RemoveProduct(
+            new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
+            new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f9')
+        ));
+
+        $this->bus->dispatch(new CheckOut(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
         ));
 
-        */
+        dd('roflolol');
 
         $player = $player_builder
             ->all()
             ->get();
 
         $player->play();
-
-        dd($this->app->make('BoundedContext\Contracts\Event\Log'));
     }
 }

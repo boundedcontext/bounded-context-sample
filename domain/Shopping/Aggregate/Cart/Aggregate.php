@@ -28,7 +28,7 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\S
         ));
     }
 
-    protected function handle_add_product_to_cart(
+    protected function handle_add_product(
         Command\AddProduct $command
     )
     {
@@ -82,7 +82,7 @@ class Aggregate extends AbstractAggregate implements \BoundedContext\Contracts\S
         ));
     }
 
-    protected function handle_remove_product_from_cart(
+    protected function handle_remove_product(
         Command\RemoveProduct $command
     )
     {

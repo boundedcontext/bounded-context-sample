@@ -14,7 +14,7 @@ class State extends AbstractState implements \BoundedContext\Contracts\Sourced\A
         );
     }
 
-    protected function when_shopping_cart_product_added_to_cart(
+    protected function when_shopping_cart_product_added(
         Projection $projection,
         Event\ProductAdded $event
     )
@@ -34,7 +34,7 @@ class State extends AbstractState implements \BoundedContext\Contracts\Sourced\A
         );
     }
 
-    protected function when_shopping_cart_product_removed_from_cart(
+    protected function when_shopping_cart_product_removed(
         Projection $projection,
         Event\ProductRemoved $event
     )
@@ -51,22 +51,4 @@ class State extends AbstractState implements \BoundedContext\Contracts\Sourced\A
     {
         $projection->checkout();
     }
-
-    /*
-    protected function when_shopping_cart_emptied(
-        Projection $projection,
-        Event\Emptied $event
-    )
-    {
-        // We don't care, it doesn't effect the state
-    }
-
-    protected function when_shopping_cart_full(
-        Projection $projection,
-        Event\Full $event
-    )
-    {
-        // We don't care, it doesn't effect the state
-    }
-    */
 }

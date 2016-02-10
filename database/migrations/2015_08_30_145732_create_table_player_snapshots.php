@@ -12,7 +12,7 @@ class CreateTablePlayerSnapshots extends Migration
      */
     public function up()
     {
-        Schema::create('player_snapshots', function (Blueprint $table) {
+        Schema::create('snapshots_player', function (Blueprint $table) {
             $table->string('id', 36)->unique();
             $table->dateTimeTz('occurred_at');
             $table->integer('version')->default(0);
@@ -28,6 +28,6 @@ class CreateTablePlayerSnapshots extends Migration
      */
     public function down()
     {
-        Schema::drop('player_snapshots');
+        Schema::drop('snapshots_player');
     }
 }

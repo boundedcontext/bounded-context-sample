@@ -13,29 +13,22 @@ use Domain\Shopping\Entity\Product;
 class Projection extends AbstractProjection implements ProjectionContract, QueryableContract
 {
     /**
-     * @var  \BoundedContext\ValueObject\Boolean
-     * @as is_created
+     * @var \BoundedContext\ValueObject\Boolean
      */
     public $is_created;
 
     /**
      * @var \BoundedContext\ValueObject\Boolean
-     * @as is_checked_out
      */
     public $is_checked_out;
 
     /**
      * @var \Domain\Shopping\Entity\Cart
-     * @as cart
      */
     public $cart;
 
     /**
-     * @var \BoundedContext\Index\Index
-     *
-     * @collection
-     * @of \Domain\Shopping\Entity\Product
-     * @as products
+     * @var \Domain\Shopping\ValueObject\Product\Index
      */
     public $products;
 

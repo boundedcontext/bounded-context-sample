@@ -6,7 +6,7 @@ use Domain\Shopping\Aggregate\Cart\Projection as Queryable;
 
 class Emptied extends AbstractInvariant implements Invariant
 {
-    protected function satisfy(Queryable $queryable)
+    protected function satisfier(Queryable $queryable)
     {
         return ($queryable->products->count() == 0);
     }

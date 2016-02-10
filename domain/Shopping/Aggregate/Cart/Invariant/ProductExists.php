@@ -14,7 +14,7 @@ class ProductExists extends AbstractInvariant implements Invariant
         $this->product_id = $product_id;
     }
 
-    protected function satisfy(Queryable $queryable)
+    protected function satisfier(Queryable $queryable)
     {
         return $queryable->products->exists(
             $this->product_id

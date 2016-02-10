@@ -14,7 +14,7 @@ class OnlyActiveMemberCart extends AbstractInvariant implements Invariant
         $this->member_id = $member_id;
     }
 
-    protected function satisfy(Queryable $queryable)
+    protected function satisfier(Queryable $queryable)
     {
         return (!$queryable->has_active_cart(
             $this->member_id
