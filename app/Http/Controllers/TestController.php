@@ -64,6 +64,10 @@ class TestController extends Controller
             )
         ));
 
+        // Reset Aggregate State Snapshot
+        $connection = $this->app->make('db');
+        $connection->table('snapshots_aggregate_state')->delete();
+
         $this->bus->dispatch(new AddProduct(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
             new Product(
@@ -71,6 +75,10 @@ class TestController extends Controller
                 new Quantity(5)
             )
         ));
+
+        // Reset Aggregate State Snapshot
+        $connection = $this->app->make('db');
+        $connection->table('snapshots_aggregate_state')->delete();
 
         $this->bus->dispatch(new ChangeProductQuantity(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
@@ -80,10 +88,18 @@ class TestController extends Controller
             )
         ));
 
+        // Reset Aggregate State Snapshot
+        $connection = $this->app->make('db');
+        $connection->table('snapshots_aggregate_state')->delete();
+
         $this->bus->dispatch(new RemoveProduct(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6'),
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f9')
         ));
+
+        // Reset Aggregate State Snapshot
+        $connection = $this->app->make('db');
+        $connection->table('snapshots_aggregate_state')->delete();
 
         $this->bus->dispatch(new CheckOut(
             new Uuid('b98540d7-c3f9-4af3-8d77-e46662fcb3f6')
